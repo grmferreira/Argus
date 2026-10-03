@@ -40,7 +40,7 @@ button.secondary{background:#e5e7eb;border:0;padding:10px 14px;border-radius:9px
 <body>
 <header>
 <h1>Conferência de Pacotes</h1>
-<small>V2 • Encontrar não alocados + Backlog</small>
+<small>V4 • Encontrar não alocados + Backlog</small>
 </header>
 
 <nav>
@@ -70,6 +70,7 @@ button.secondary{background:#e5e7eb;border:0;padding:10px 14px;border-radius:9px
 
 <div class="card">
 <h2>Escanear pacote</h2>
+<button class="secondary" type="button" onclick="unlockAudio();this.textContent='🔊 Som ativado'">🔊 Ativar som</button>
 <input id="pendingScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Bipe ou digite o ID">
 <div id="pendingResult" class="result">Aguardando leitura...</div>
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
@@ -150,10 +151,22 @@ function parseCSV(text){
 function headersMap(headers){
  const m={}; headers.forEach((h,i)=>m[normalize(h)]=i); return m;
 }
-function playFound(){
+let audioCtx=null;
+function unlockAudio(){
  try{
   const AC=window.AudioContext||window.webkitAudioContext;
-  const ctx=new AC(); if(ctx.state==='suspended')ctx.resume();
+  if(!AC)return;
+  if(!audioCtx) audioCtx=new AC();
+  if(audioCtx.state==='suspended') audioCtx.resume();
+ }catch(e){}
+}
+window.addEventListener('pointerdown',unlockAudio,{passive:true});
+window.addEventListener('touchstart',unlockAudio,{passive:true});
+function playFound(){
+ try{
+  unlockAudio();
+  const ctx=audioCtx;
+  if(!ctx)return;
   const now=ctx.currentTime;
   [880,1175,1480].forEach((f,j)=>{
    const o=ctx.createOscillator(),g=ctx.createGain(),t=now+j*.11;
@@ -163,7 +176,6 @@ function playFound(){
    g.gain.exponentialRampToValueAtTime(.0001,t+.10);
    o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.11);
   });
-  setTimeout(()=>ctx.close(),500);
  }catch(e){}
  try{if(navigator.vibrate)navigator.vibrate([100,60,160])}catch(e){}
 }
@@ -205,14 +217,23 @@ function renderHistory(){
  if(!state.history.length){el.innerHTML='Nenhuma leitura ainda.';return}
  el.innerHTML=state.history.slice(0,30).map(x=>`<div class="fileRow"><b>${x.id}</b> — ${x.result}</div><small>${x.datetime} • ${x.route||'Sem rota'}${x.duplicate?' • DUPLICADA':''}</small>`).join('')
 }
-function csvEsc(v){const s=String(v??'');return /[",\\n;]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
+function csvEsc(v){
+ const s=String(v??'');
+ return /[",\n;]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+}
 function downloadHistoryCSV(){
  if(!state.history.length){alert('Não há histórico para baixar.');return}
- const rows=[['Data/Hora','ID do pacote','Rota','Resultado','Localização','Duplicada'],...state.history.map(x=>[x.datetime,x.id,x.route,x.result,x.location,x.duplicate?'SIM':'NÃO'])];
- const blob=new Blob(['\\uFEFF'+rows.map(r=>r.map(csvEsc).join(',')).join('\\r\\n')],{type:'text/csv;charset=utf-8;'});
+ // CSV simples e organizado: ID | Rota | Status | Data/Hora
+ // Se alguma informação não existir, a célula fica em branco.
+ const rows=[
+  ['ID do pacote','Rota','Status','Data/Hora'],
+  ...state.history.map(x=>[x.id||'',x.route||'',x.result||'',x.datetime||''])
+ ];
+ const csv='\uFEFF'+rows.map(r=>r.map(csvEsc).join(',')).join('\r\n');
+ const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
  const url=URL.createObjectURL(blob),a=document.createElement('a');
  a.href=url;a.download='historico_conferencia_'+new Date().toISOString().slice(0,10)+'.csv';
- document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)
+ document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
 }
 document.getElementById('downloadHistory').addEventListener('click',downloadHistoryCSV);
 document.getElementById('clearHistory').addEventListener('click',()=>{if(confirm('Apagar todo o histórico desta sessão?')){state.history=[];saveHistory()}});
