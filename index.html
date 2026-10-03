@@ -65,12 +65,21 @@ button.secondary{background:#e5e7eb;border:0;padding:10px 14px;border-radius:9px
 <div class="stat">Restantes<b id="pRemaining">0</b></div>
 </div>
 <div class="progress"><i id="pBar"></i></div>
+<div id="operationProgress" class="muted" style="text-align:center">0% concluído</div>
 </div>
 
 <div class="card">
 <h2>Escanear pacote</h2>
 <input id="pendingScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Bipe ou digite o ID">
 <div id="pendingResult" class="result">Aguardando leitura...</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+<button class="primary" id="downloadHistory" type="button">📥 Baixar histórico CSV</button>
+<button class="secondary" id="clearHistory" type="button">🗑️ Limpar histórico</button>
+</div>
+</div>
+<div class="card">
+<h2>Últimas leituras</h2>
+<div id="historyList" class="muted">Nenhuma leitura ainda.</div>
 </div>
 </section>
 
@@ -102,7 +111,8 @@ button.secondary{background:#e5e7eb;border:0;padding:10px 14px;border-radius:9px
 <script>
 const state={
  pending:new Map(), found:new Set(),
- backlog:new Map(), backlogFiles:0
+ backlog:new Map(), backlogFiles:0,
+ history:JSON.parse(localStorage.getItem('conferenciaHistorico')||'[]')
 };
 
 function showTab(tab){
@@ -142,16 +152,20 @@ function headersMap(headers){
 }
 function playFound(){
  try{
-  const a=new AudioContext(), now=a.currentTime;
-  [880,1175].forEach((f,j)=>{
-   const o=a.createOscillator(),g=a.createGain();
+  const AC=window.AudioContext||window.webkitAudioContext;
+  const ctx=new AC(); if(ctx.state==='suspended')ctx.resume();
+  const now=ctx.currentTime;
+  [880,1175,1480].forEach((f,j)=>{
+   const o=ctx.createOscillator(),g=ctx.createGain(),t=now+j*.11;
    o.frequency.value=f;o.type='sine';
-   g.gain.setValueAtTime(.0001,now+j*.13);
-   g.gain.exponentialRampToValueAtTime(.75,now+j*.13+.02);
-   g.gain.exponentialRampToValueAtTime(.0001,now+j*.13+.11);
-   o.connect(g);g.connect(a.destination);o.start(now+j*.13);o.stop(now+j*.13+.12);
+   g.gain.setValueAtTime(.0001,t);
+   g.gain.exponentialRampToValueAtTime(1.0,t+.015);
+   g.gain.exponentialRampToValueAtTime(.0001,t+.10);
+   o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.11);
   });
+  setTimeout(()=>ctx.close(),500);
  }catch(e){}
+ try{if(navigator.vibrate)navigator.vibrate([100,60,160])}catch(e){}
 }
 function csvRead(file){
  return new Promise((resolve,reject)=>{
@@ -182,31 +196,61 @@ function updatePending(){
  const found=[...state.found].filter(id=>state.pending.get(id)?.location==='na estacao').length;
  const remaining=Math.max(0,eligible-found);
  pTotal.textContent=state.pending.size;pEligible.textContent=eligible;pFound.textContent=found;pRemaining.textContent=remaining;
- pBar.style.width=(eligible?Math.min(100,found/eligible*100):0)+'%';
+ const pct=eligible?Math.min(100,found/eligible*100):0; pBar.style.width=pct+'%'; const op=document.getElementById('operationProgress'); if(op)op.textContent=`${pct.toFixed(0)}% concluído • ${found} de ${eligible} encontrados`;
 }
+function saveHistory(){try{localStorage.setItem('conferenciaHistorico',JSON.stringify(state.history))}catch(e){}renderHistory()}
+function addHistory(x){state.history.unshift(x);if(state.history.length>1000)state.history=state.history.slice(0,1000);saveHistory()}
+function renderHistory(){
+ const el=document.getElementById('historyList');if(!el)return;
+ if(!state.history.length){el.innerHTML='Nenhuma leitura ainda.';return}
+ el.innerHTML=state.history.slice(0,30).map(x=>`<div class="fileRow"><b>${x.id}</b> — ${x.result}</div><small>${x.datetime} • ${x.route||'Sem rota'}${x.duplicate?' • DUPLICADA':''}</small>`).join('')
+}
+function csvEsc(v){const s=String(v??'');return /[",\\n;]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
+function downloadHistoryCSV(){
+ if(!state.history.length){alert('Não há histórico para baixar.');return}
+ const rows=[['Data/Hora','ID do pacote','Rota','Resultado','Localização','Duplicada'],...state.history.map(x=>[x.datetime,x.id,x.route,x.result,x.location,x.duplicate?'SIM':'NÃO'])];
+ const blob=new Blob(['\\uFEFF'+rows.map(r=>r.map(csvEsc).join(',')).join('\\r\\n')],{type:'text/csv;charset=utf-8;'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='historico_conferencia_'+new Date().toISOString().slice(0,10)+'.csv';
+ document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)
+}
+document.getElementById('downloadHistory').addEventListener('click',downloadHistoryCSV);
+document.getElementById('clearHistory').addEventListener('click',()=>{if(confirm('Apagar todo o histórico desta sessão?')){state.history=[];saveHistory()}});
+renderHistory();
+
 function pendingLookup(raw){
  const id=raw.trim();if(!id)return;
- const r=document.getElementById('pendingResult');
+ const r=document.getElementById('pendingResult'),datetime=new Date().toLocaleString('pt-BR');
  const item=state.pending.get(id);
  if(!item){
-  r.className='result bad';r.innerHTML='<div class="big">NÃO ENCONTRADO</div><div>Esse ID não está na base.</div>';return;
+  r.className='result bad';r.innerHTML='<div class="big">NÃO ENCONTRADO</div><div>Esse ID não está na base.</div>';
+  addHistory({datetime,id,route:'',result:'Não encontrado',location:'',duplicate:false});return
  }
  if(item.location==='caminho para a estacao'){
-  r.className='result warn';r.innerHTML=`<div class="big">A CAMINHO</div><div class="route">${item.route||'Rota não informada'}</div><div>Está a caminho da estação e não entra na contagem.</div>`;return;
+  r.className='result warn';r.innerHTML=`<div class="big">A CAMINHO</div><div class="route">${item.route||'Rota não informada'}</div><div>Está a caminho da estação e não entra na contagem.</div>`;
+  addHistory({datetime,id,route:item.route,result:'A caminho',location:'Caminho para a estação',duplicate:false});return
  }
  if(item.location==='na estacao'){
   const already=state.found.has(id);
   if(!already){state.found.add(id);playFound();updatePending()}
-  r.className='result good';
-  r.innerHTML=`<div class="big">${already?'JÁ ENCONTRADO':'ENCONTRADO'}</div><div class="route">${item.route||'Rota não informada'}</div><div>${already?'Leitura duplicada — não contou novamente.':'Pacote localizado na estação.'}</div>`;
-  return;
+  r.className='result good';r.innerHTML=`<div class="big">${already?'JÁ ENCONTRADO':'ENCONTRADO'}</div><div class="route">${item.route||'Rota não informada'}</div><div>${already?'Leitura duplicada — não contou novamente.':'Pacote localizado na estação.'}</div>`;
+  addHistory({datetime,id,route:item.route,result:already?'Já encontrado':'Encontrado',location:'Na estação',duplicate:already});return
  }
  r.className='result info';r.innerHTML=`<div class="big">ENCONTRADO</div><div class="route">${item.route||'Rota não informada'}</div><div>Localização: ${item.location||'não informada'}</div>`;
+ addHistory({datetime,id,route:item.route,result:'Encontrado',location:item.location,duplicate:false})
 }
 function setupScan(input,fn){
+ let timer=null;
  input.addEventListener('keydown',e=>{
-  if(e.key==='Enter'){e.preventDefault();fn(input.value);input.value='';}
+  if(e.key==='Enter'){e.preventDefault();clearTimeout(timer);fn(input.value);input.value=''}
  });
+ input.addEventListener('input',()=>{
+  clearTimeout(timer);
+  const value=input.value.trim();
+  if(/^\\d{6,}$/.test(value)){
+   timer=setTimeout(()=>{if(input.value.trim()===value){fn(value);input.value=''}},140)
+  }
+ })
 }
 setupScan(document.getElementById('pendingScan'),pendingLookup);
 
