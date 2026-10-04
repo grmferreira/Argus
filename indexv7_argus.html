@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>ARGUS — Conferência de Pacotes</title>
+<style>
+:root{--red:#CD1C18;--red2:#f02a25;--black:#050505;--panel:#101010;--panel2:#171717;--line:#292929;--white:#fff;--muted:#a4a4a4;--green:#20c979;--yellow:#f2b94b;--blue:#338cff}
+*{box-sizing:border-box}html{background:var(--black)}body{margin:0;background:radial-gradient(circle at 50% -10%,#241010 0,#080808 35%,#000 75%);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}header{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.94);backdrop-filter:blur(14px);border-bottom:1px solid #242424;padding:14px max(16px,calc((100vw - 980px)/2));display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brandMark{width:36px;height:24px;position:relative}.brandMark:before{content:"";position:absolute;inset:3px 0;background:var(--red);clip-path:polygon(0 50%,22% 18%,58% 0,100% 18%,82% 50%,100% 82%,58% 100%,22% 82%)}.brandMark:after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:#050505;left:13px;top:7px;box-shadow:0 0 0 2px var(--white)}.brand strong{font-size:22px;letter-spacing:.08em}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase}.live{display:flex;align-items:center;gap:7px;color:#ddd;font-size:12px}.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #20c979;display:block}.shell{max-width:980px;margin:auto;padding:18px 16px 42px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;background:#0c0c0c;border:1px solid var(--line);padding:6px;border-radius:16px}.tabs button{border:0;background:transparent;color:#aaa;padding:12px 10px;border-radius:11px;font-weight:800}.tabs button.active{background:var(--red);color:#fff;box-shadow:0 6px 20px #cd1c1840}.card{background:linear-gradient(145deg,#151515,#0d0d0d);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 12px 35px #0008}.eyebrow{color:#999;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}.hero{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.hero h1{margin:3px 0 0;font-size:27px;line-height:1.05}.hero p{margin:6px 0 0;color:var(--muted);font-size:13px}.upload{border:1px dashed #454545;border-radius:15px;padding:14px;background:#0a0a0a}.upload input{width:100%;color:#ddd;font-size:13px}.upload input::file-selector-button{background:#fff;color:#000;border:0;border-radius:9px;padding:9px 11px;font-weight:800;margin-right:9px}.tiny{font-size:11px;color:var(--muted);margin-top:8px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:#0a0a0a;border:1px solid #222;border-radius:14px;padding:12px;text-align:center}.stat span{display:block;color:#8e8e8e;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.stat b{display:block;font-size:23px;margin-top:3px}.stat:last-child b{color:var(--red2)}.progress{height:10px;background:#252525;border-radius:20px;overflow:hidden;margin:13px 0 6px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#ff4a45);box-shadow:0 0 12px #cd1c1870}.progressText{text-align:right;color:#aaa;font-size:11px}.scanWrap{position:relative;margin-top:12px}.scan{width:100%;font-size:20px;padding:18px 48px 18px 18px;border:2px solid #2d2d2d;border-radius:16px;background:#080808;color:#fff;outline:none;text-align:left;box-shadow:inset 0 0 0 1px #000}.scan:focus{border-color:var(--red);box-shadow:0 0 0 4px #cd1c1820}.scan::placeholder{color:#666}.scanIcon{position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:22px;color:#888}.ready{display:flex;align-items:center;gap:7px;margin-top:9px;color:#aaa;font-size:11px}.ready i{width:7px;height:7px;background:var(--green);border-radius:50%;display:block}.result{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;border-radius:18px;margin-top:12px;background:#0a0a0a;border:1px solid #292929}.result .big{font-size:28px;font-weight:900;letter-spacing:.02em}.result .route{font-size:34px;font-weight:900;margin-top:5px;color:#fff}.result.good{background:linear-gradient(145deg,#0d2a1e,#09140f);border-color:#20c979}.result.warn{background:linear-gradient(145deg,#2a210d,#141006);border-color:var(--yellow)}.result.bad{background:linear-gradient(145deg,#2b0d0c,#130707);border-color:var(--red)}.result.info{background:linear-gradient(145deg,#151515,#0b0b0b)}.result .sub{color:#aaa;margin-top:7px;font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.primary,.secondary{border:0;border-radius:12px;padding:12px 14px;font-weight:800}.primary{background:var(--red);color:#fff}.secondary{background:#242424;color:#fff}.primary:hover{background:var(--red2)}.fileRow{padding:11px 12px;border:1px solid #2a2a2a;background:#0b0b0b;border-radius:12px;margin-top:8px}.fileRow b{display:block;font-size:13px}.muted{color:var(--muted)}.statusBadge{display:inline-block;padding:7px 10px;border-radius:99px;font-weight:900;margin-top:8px;background:#262626;color:#fff;font-size:11px}.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.sectionTitle h2{margin:0;font-size:17px}.sectionTitle span{font-size:10px;color:#777;text-transform:uppercase}.menuGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.menuCard{min-height:150px;border-radius:18px;border:1px solid #2a2a2a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:#101010}.menuCard.main{background:linear-gradient(145deg,var(--red),#8e100e);border-color:#ff514d}.menuCard .icon{font-size:28px}.menuCard h2{margin:8px 0 3px;font-size:22px}.menuCard p{margin:0;color:#ddd;font-size:12px}.menuCard .arrow{align-self:flex-end;font-size:24px}.hidden{display:none!important}.divider{height:1px;background:#222;margin:14px 0}@media(max-width:680px){header{padding:13px 15px}.shell{padding:14px 12px 30px}.stats{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:24px}.result .big{font-size:25px}.result .route{font-size:30px}.menuGrid{grid-template-columns:1fr}.menuCard{min-height:125px}}@media(min-width:800px){body{padding-bottom:30px}.shell{padding-top:22px}.result{min-height:190px}.scan{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="brandMark"></div><div><strong>ARGUS</strong><small>Conferência de pacotes</small></div></div><div class="live"><i></i><span>Leitura ativa</span></div></header>
+<main class="shell">
+<nav class="tabs"><button id="tabPending" class="active" onclick="showTab('pending')">🔎 Encontrar não alocados</button><button id="tabBacklog" onclick="showTab('backlog')">▣ Backlog</button></nav>
+<section id="pending">
+<div class="card">
+<div class="hero"><div><div class="eyebrow">Operação</div><h1>Encontrar não alocados</h1><p>Carregue a base e confira os pacotes com leitura rápida.</p></div><button class="secondary" type="button" onclick="unlockAudio();this.textContent='🔊 Som ativado'">🔊 Som</button></div>
+<div class="upload"><input id="pendingFile" type="file" accept=".csv,text/csv"><div id="pendingInfo" class="tiny">Nenhum arquivo carregado.</div></div>
+</div>
+<div class="card"><div class="sectionTitle"><h2>Progresso da operação</h2><span>Base atual</span></div><div class="stats"><div class="stat"><span>Total</span><b id="pTotal">0</b></div><div class="stat"><span>Pendentes</span><b id="pEligible">0</b></div><div class="stat"><span>Encontrados</span><b id="pFound">0</b></div><div class="stat"><span>Restantes</span><b id="pRemaining">0</b></div></div><div class="progress"><i id="pBar"></i></div><div id="operationProgress" class="progressText">0% concluído</div></div>
+<div class="card"><div class="sectionTitle"><h2>Modo operação</h2><span>Scanner pronto</span></div><div class="scanWrap"><input id="pendingScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Aproxime o código de barras..."><span class="scanIcon">⌁</span></div><div class="ready"><i></i><span>Aguardando leitura automática</span></div><div id="pendingResult" class="result"><div class="big">AGUARDANDO LEITURA</div><div class="sub">O próximo pacote aparecerá aqui</div></div><div class="actions"><button class="primary" id="downloadHistory" type="button">↓ Baixar histórico CSV</button><button class="secondary" id="clearHistory" type="button">Limpar histórico</button></div></div>
+<div class="card"><div class="sectionTitle"><h2>Últimas leituras</h2><span>Histórico local</span></div><div id="historyList" class="muted">Nenhuma leitura ainda.</div></div>
+</section>
+<section id="backlog" class="hidden">
+<div class="card"><div class="hero"><div><div class="eyebrow">Consulta</div><h1>Backlog</h1><p>Adicione os arquivos e deixe o ARGUS identificar os status.</p></div></div><div class="upload"><input id="backlogFiles" type="file" accept=".csv,text/csv"><div class="tiny">No celular, selecione um arquivo por vez. Os arquivos ficam acumulados.</div></div><div class="actions"><button class="secondary" id="clearBacklogFiles" type="button">Limpar arquivos</button></div><div id="backlogFileList" style="margin-top:10px"></div><div id="backlogInfo" class="tiny">Nenhum arquivo carregado.</div></div>
+<div class="card"><div class="sectionTitle"><h2>Consultar pacote</h2><span>Sem áudio</span></div><div class="scanWrap"><input id="backlogScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Bipe ou digite o ID..."><span class="scanIcon">⌁</span></div><div id="backlogResult" class="result"><div class="big">AGUARDANDO LEITURA</div><div class="sub">Consulta de status do backlog</div></div></div>
+<div class="card"><div class="sectionTitle"><h2>Status identificados</h2><span>Resumo</span></div><div id="backlogStats" class="muted">Nenhum arquivo carregado.</div></div>
+</section>
+</main>
+<script>
+const state={
+ pending:new Map(), found:new Set(),
+ backlog:new Map(), backlogFiles:0,
+ history:JSON.parse(localStorage.getItem('conferenciaHistorico')||'[]')
+};
+
+function showTab(tab){
+ document.getElementById('pending').classList.toggle('hidden',tab!=='pending');
+ document.getElementById('backlog').classList.toggle('hidden',tab!=='backlog');
+ document.getElementById('tabPending').classList.toggle('active',tab==='pending');
+ document.getElementById('tabBacklog').classList.toggle('active',tab==='backlog');
+ setTimeout(()=>document.getElementById(tab==='pending'?'pendingScan':'backlogScan').focus(),100);
+}
+
+function normalize(s){
+ return String(s??'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+function parseCSV(text){
+ text=text.replace(/^\uFEFF/,'');
+ const lines=text.split(/\r?\n/).filter(x=>x.trim()!=='');
+ if(!lines.length)return [];
+ const first=lines[0];
+ const delim=(first.match(/;/g)||[]).length>(first.match(/,/g)||[]).length?';':',';
+ const rows=[]; let row=[], cell='', quoted=false;
+ for(let i=0;i<text.length;i++){
+  const c=text[i];
+  if(c==='"'){
+   if(quoted && text[i+1]==='"'){cell+='"';i++} else quoted=!quoted;
+  } else if(c===delim && !quoted){row.push(cell);cell=''}
+  else if((c==='\n'||c==='\r')&&!quoted){
+   if(c==='\r'&&text[i+1]==='\n')i++;
+   row.push(cell);cell='';
+   if(row.some(v=>v.trim()!=='')){rows.push(row);row=[]}
+  } else cell+=c;
+ }
+ if(cell!==''||row.length){row.push(cell);if(row.some(v=>v.trim()!==''))rows.push(row)}
+ return rows;
+}
+function headersMap(headers){
+ const m={}; headers.forEach((h,i)=>m[normalize(h)]=i); return m;
+}
+let audioCtx=null;
+function unlockAudio(){
+ try{
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)return;
+  if(!audioCtx) audioCtx=new AC();
+  if(audioCtx.state==='suspended') audioCtx.resume();
+ }catch(e){}
+}
+window.addEventListener('pointerdown',unlockAudio,{passive:true});
+window.addEventListener('touchstart',unlockAudio,{passive:true});
+function playFound(){
+ try{
+  unlockAudio();
+  const ctx=audioCtx;
+  if(!ctx)return;
+  const now=ctx.currentTime;
+  [880,1175,1480].forEach((f,j)=>{
+   const o=ctx.createOscillator(),g=ctx.createGain(),t=now+j*.11;
+   o.frequency.value=f;o.type='sine';
+   g.gain.setValueAtTime(.0001,t);
+   g.gain.exponentialRampToValueAtTime(1.0,t+.015);
+   g.gain.exponentialRampToValueAtTime(.0001,t+.10);
+   o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.11);
+  });
+ }catch(e){}
+ try{if(navigator.vibrate)navigator.vibrate([100,60,160])}catch(e){}
+}
+function csvRead(file){
+ return new Promise((resolve,reject)=>{
+  const r=new FileReader();
+  r.onload=()=>resolve(parseCSV(r.result));
+  r.onerror=reject;r.readAsText(file,'UTF-8');
+ });
+}
+
+document.getElementById('pendingFile').addEventListener('change',async e=>{
+ const f=e.target.files[0]; if(!f)return;
+ const rows=await csvRead(f);
+ if(!rows.length){alert('CSV vazio.');return}
+ const hm=headersMap(rows[0]);
+ const idI=hm['id do pacote'], locI=hm['localizacao do pacote'], routeI=hm['n.º rota']??hm['n.° rota']??hm['n rota'];
+ state.pending.clear();state.found.clear();
+ rows.slice(1).forEach(r=>{
+  const id=String(r[idI]??'').trim(),loc=normalize(r[locI]??'');
+  if(!id)return;
+  state.pending.set(id,{id,location:loc,route:String(r[routeI]??'').trim()});
+ });
+ updatePending();
+ document.getElementById('pendingInfo').textContent=`${state.pending.size} pacotes carregados de ${f.name}`;
+ document.getElementById('pendingScan').focus();
+});
+function updatePending(){
+ let eligible=0;state.pending.forEach(v=>{if(v.location==='na estacao')eligible++});
+ const found=[...state.found].filter(id=>state.pending.get(id)?.location==='na estacao').length;
+ const remaining=Math.max(0,eligible-found);
+ pTotal.textContent=state.pending.size;pEligible.textContent=eligible;pFound.textContent=found;pRemaining.textContent=remaining;
+ const pct=eligible?Math.min(100,found/eligible*100):0; pBar.style.width=pct+'%'; const op=document.getElementById('operationProgress'); if(op)op.textContent=`${pct.toFixed(0)}% concluído • ${found} de ${eligible} encontrados`;
+}
+function saveHistory(){try{localStorage.setItem('conferenciaHistorico',JSON.stringify(state.history))}catch(e){}renderHistory()}
+function addHistory(x){state.history.unshift(x);if(state.history.length>1000)state.history=state.history.slice(0,1000);saveHistory()}
+function renderHistory(){
+ const el=document.getElementById('historyList');if(!el)return;
+ if(!state.history.length){el.innerHTML='Nenhuma leitura ainda.';return}
+ el.innerHTML=state.history.slice(0,30).map(x=>`<div class="fileRow"><b>${x.id}</b> — ${x.result}</div><small>${x.datetime} • ${x.route||'Sem rota'}${x.duplicate?' • DUPLICADA':''}</small>`).join('')
+}
+function csvEsc(v){
+ const s=String(v??'');
+ return /[",\n;]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+}
+function downloadHistoryCSV(){
+ if(!state.history.length){alert('Não há histórico para baixar.');return}
+ // CSV simples e organizado: ID | Rota | Status | Data/Hora
+ // Se alguma informação não existir, a célula fica em branco.
+ const rows=[
+  ['ID do pacote','Rota','Status','Data/Hora'],
+  ...state.history.map(x=>[x.id||'',x.route||'',x.result||'',x.datetime||''])
+ ];
+ const csv='\uFEFF'+rows.map(r=>r.map(csvEsc).join(',')).join('\r\n');
+ const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='historico_conferencia_'+new Date().toISOString().slice(0,10)+'.csv';
+ document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+}
+document.getElementById('downloadHistory').addEventListener('click',downloadHistoryCSV);
+document.getElementById('clearHistory').addEventListener('click',()=>{if(confirm('Apagar todo o histórico desta sessão?')){state.history=[];saveHistory()}});
+renderHistory();
+
+function pendingLookup(raw){
+ const id=raw.trim();if(!id)return;
+ const r=document.getElementById('pendingResult'),datetime=new Date().toLocaleString('pt-BR');
+ const item=state.pending.get(id);
+ if(!item){
+  r.className='result bad';r.innerHTML='<div class="big">NÃO ENCONTRADO</div><div>Esse ID não está na base.</div>';
+  addHistory({datetime,id,route:'',result:'Não encontrado',location:'',duplicate:false});return
+ }
+ if(item.location==='caminho para a estacao'){
+  playFound();
+  r.className='result warn';r.innerHTML=`<div class="big">A CAMINHO</div><div class="route">${item.route||'Rota não informada'}</div><div>Está a caminho da estação e não entra na contagem.</div>`;
+  addHistory({datetime,id,route:item.route,result:'A caminho',location:'Caminho para a estação',duplicate:false});return
+ }
+ if(item.location==='na estacao'){
+  const already=state.found.has(id);
+  if(!already){state.found.add(id);playFound();updatePending()}
+  r.className='result good';r.innerHTML=`<div class="big">${already?'JÁ ENCONTRADO':'ENCONTRADO'}</div><div class="route">${item.route||'Rota não informada'}</div><div>${already?'Leitura duplicada — não contou novamente.':'Pacote localizado na estação.'}</div>`;
+  addHistory({datetime,id,route:item.route,result:already?'Já encontrado':'Encontrado',location:'Na estação',duplicate:already});return
+ }
+ r.className='result info';r.innerHTML=`<div class="big">ENCONTRADO</div><div class="route">${item.route||'Rota não informada'}</div><div>Localização: ${item.location||'não informada'}</div>`;
+ addHistory({datetime,id,route:item.route,result:'Encontrado',location:item.location,duplicate:false})
+}
+function setupScan(input,fn){
+ let timer=null;
+ input.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){e.preventDefault();clearTimeout(timer);fn(input.value);input.value=''}
+ });
+ input.addEventListener('input',()=>{
+  clearTimeout(timer);
+  const value=input.value.trim();
+  if(/^\\d{6,}$/.test(value)){
+   timer=setTimeout(()=>{if(input.value.trim()===value){fn(value);input.value=''}},140)
+  }
+ })
+}
+setupScan(document.getElementById('pendingScan'),pendingLookup);
+
+function inferStatus(row,hm){
+ const status=normalize(row[hm['status do envio']]??row[hm['status']]??'');
+ const sub=normalize(row[hm['subtatus do envio']]??row[hm['substatus do envio']]??row[hm['substatus']]??'');
+ const combo=(status+' '+sub).trim();
+ if(sub==='waiting_return'||combo.includes('waiting_return'))return 'AGUARDANDO DEVOLUÇÃO';
+ if(sub==='for_return'||combo.includes('for_return'))return 'PARA DEVOLVER';
+ if(sub==='sorting'||combo.includes('sorting'))return 'PARA DESPACHAR';
+ if(sub==='claimed'||combo.includes('claimed'))return 'RECLAMADO';
+ if(sub==='blocked'||combo.includes('blocked'))return 'BLOQUEADO';
+ if(status==='on_way'||combo.includes('on_way'))return 'A CAMINHO';
+ if(status==='on_route'||combo.includes('on_route'))return 'EM ROTA DE ENTREGA';
+ if(status==='at_station')return sub?sub.replaceAll('_',' ').toUpperCase():'NA ESTAÇÃO';
+ return (sub||status||'STATUS NÃO IDENTIFICADO').replaceAll('_',' ').toUpperCase();
+}
+const backlogSelectedFiles=[];
+document.getElementById('backlogFiles').addEventListener('change',async e=>{
+ const picked=[...e.target.files];
+ if(!picked.length)return;
+
+ for(const f of picked){
+   // evita adicionar o mesmo arquivo novamente
+   if(!backlogSelectedFiles.some(x=>x.name===f.name && x.size===f.size && x.lastModified===f.lastModified)){
+     backlogSelectedFiles.push(f);
+   }
+ }
+ e.target.value='';
+ await rebuildBacklog();
+});
+
+document.getElementById('clearBacklogFiles').addEventListener('click',()=>{
+ backlogSelectedFiles.length=0;
+ state.backlog.clear();
+ state.backlogFiles=0;
+ document.getElementById('backlogFileList').innerHTML='';
+ document.getElementById('backlogInfo').textContent='Nenhum arquivo carregado.';
+ document.getElementById('backlogStats').textContent='Nenhum arquivo carregado.';
+ document.getElementById('backlogResult').className='result';
+ document.getElementById('backlogResult').innerHTML='Aguardando leitura...';
+});
+
+async function rebuildBacklog(){
+ state.backlog.clear();
+ state.backlogFiles=backlogSelectedFiles.length;
+ let totalRows=0;
+
+ for(const f of backlogSelectedFiles){
+  const rows=await csvRead(f);
+  if(!rows.length)continue;
+
+  const hm=headersMap(rows[0]);
+  let idI=hm['id do envio'];
+  if(idI===undefined)idI=0;
+
+  for(const row of rows.slice(1)){
+   const id=String(row[idI]??'').trim();
+   if(!id)continue;
+   totalRows++;
+
+   const status=inferStatus(row,hm);
+   const detail={
+    status,
+    source:f.name,
+    rawStatus:String(row[hm['status do envio']]??row[hm['status']]??'').trim(),
+    rawSub:String(row[hm['subtatus do envio']]??row[hm['substatus']]??row[hm['substatus do envio']]??'').trim(),
+    route:hm['rota']!==undefined?String(row[hm['rota']]??'').trim():''
+   };
+
+   if(!state.backlog.has(id))state.backlog.set(id,[]);
+   if(!state.backlog.get(id).some(x=>x.status===status&&x.source===f.name)){
+     state.backlog.get(id).push(detail);
+   }
+  }
+ }
+
+ renderBacklogFileList();
+ document.getElementById('backlogInfo').textContent=
+   `${backlogSelectedFiles.length} arquivo(s) carregado(s) • ${totalRows} registros lidos • ${state.backlog.size} IDs únicos`;
+ renderBacklogStats();
+ document.getElementById('backlogScan').focus();
+}
+
+function renderBacklogFileList(){
+ const el=document.getElementById('backlogFileList');
+ if(!backlogSelectedFiles.length){
+   el.innerHTML='';
+   return;
+ }
+ el.innerHTML=backlogSelectedFiles.map((f,i)=>
+   `<div class="fileRow"><b>${i+1}. ${f.name}</b><small>${Math.round(f.size/1024)} KB</small></div>`
+ ).join('');
+}
+
+function renderBacklogStats(){
+ const counts={};state.backlog.forEach(arr=>arr.forEach(x=>counts[x.status]=(counts[x.status]||0)+1));
+ const el=document.getElementById('backlogStats');
+ el.innerHTML=Object.keys(counts).sort().map(k=>`<div class="fileRow"><b>${k}</b>${counts[k]} registro(s)</div>`).join('')||'Nenhum status identificado.';
+}
+function backlogLookup(raw){
+ const id=raw.trim();if(!id)return;
+ const r=document.getElementById('backlogResult');
+ const items=state.backlog.get(id);
+ if(!items){
+  r.className='result bad';r.innerHTML='<div class="big">NÃO ENCONTRADO</div><div>Esse ID não está nos arquivos do Backlog.</div>';return;
+ }
+ const unique=[...new Map(items.map(x=>[x.status+'|'+x.source,x])).values()];
+ const html=unique.map(x=>`<div style="margin-top:10px"><span class="statusBadge">${x.status}</span><br><small>${x.source}</small></div>`).join('');
+ r.className='result info';
+ r.innerHTML=`<div class="big">PACOTE ENCONTRADO</div><div style="font-size:19px;margin-top:6px">${id}</div>${html}`;
+}
+setupScan(document.getElementById('backlogScan'),backlogLookup);
+</script>
+</body>
+</html>
