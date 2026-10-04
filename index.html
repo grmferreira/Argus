@@ -2,113 +2,33 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conferência de Pacotes V2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>ARGUS — Conferência de Pacotes</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f5f7;color:#202124}
-header{background:#111827;color:white;padding:16px 18px;position:sticky;top:0;z-index:5}
-header h1{margin:0;font-size:20px}
-header small{opacity:.75}
-nav{display:flex;gap:8px;padding:12px;background:white;border-bottom:1px solid #ddd;position:sticky;top:65px;z-index:4}
-nav button{flex:1;padding:12px;border:0;border-radius:9px;background:#e5e7eb;font-weight:bold}
-nav button.active{background:#111827;color:white}
-main{max-width:900px;margin:auto;padding:16px}
-.card{background:white;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 4px #0001}
-h2{margin-top:0;font-size:19px}
-input[type=file]{width:100%;padding:12px;border:1px dashed #9ca3af;border-radius:10px;background:#fafafa}
-button.primary{background:#111827;color:white;border:0;padding:12px 16px;border-radius:9px;font-weight:bold}
-button.secondary{background:#e5e7eb;border:0;padding:10px 14px;border-radius:9px}
-.scan{font-size:24px;padding:16px;width:100%;border:2px solid #d1d5db;border-radius:12px;text-align:center}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.stat{background:#f3f4f6;padding:12px;border-radius:10px;text-align:center}
-.stat b{display:block;font-size:22px}
-.progress{height:14px;background:#e5e7eb;border-radius:20px;overflow:hidden;margin:10px 0}
-.progress i{display:block;height:100%;background:#16a34a;width:0}
-.result{text-align:center;padding:24px;border-radius:14px;margin-top:14px;background:#f3f4f6}
-.result .big{font-size:30px;font-weight:800}
-.result .route{font-size:25px;font-weight:bold;margin-top:8px}
-.good{background:#dcfce7}.warn{background:#fef3c7}.bad{background:#fee2e2}.info{background:#dbeafe}
-.fileRow{padding:10px;border:1px solid #ddd;border-radius:9px;margin-top:8px}
-.fileRow b{display:block}
-.statusBadge{display:inline-block;padding:7px 10px;border-radius:20px;font-weight:bold;margin-top:8px;background:#e5e7eb}
-.hidden{display:none}
-.muted{color:#6b7280}
-@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}nav{top:65px}.result .big{font-size:25px}}
+:root{--red:#CD1C18;--red2:#f02a25;--black:#050505;--panel:#101010;--panel2:#171717;--line:#292929;--white:#fff;--muted:#a4a4a4;--green:#20c979;--yellow:#f2b94b;--blue:#338cff}
+*{box-sizing:border-box}html{background:var(--black)}body{margin:0;background:radial-gradient(circle at 50% -10%,#241010 0,#080808 35%,#000 75%);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}header{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.94);backdrop-filter:blur(14px);border-bottom:1px solid #242424;padding:14px max(16px,calc((100vw - 980px)/2));display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brandMark{width:36px;height:24px;position:relative}.brandMark:before{content:"";position:absolute;inset:3px 0;background:var(--red);clip-path:polygon(0 50%,22% 18%,58% 0,100% 18%,82% 50%,100% 82%,58% 100%,22% 82%)}.brandMark:after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:#050505;left:13px;top:7px;box-shadow:0 0 0 2px var(--white)}.brand strong{font-size:22px;letter-spacing:.08em}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase}.live{display:flex;align-items:center;gap:7px;color:#ddd;font-size:12px}.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #20c979;display:block}.shell{max-width:980px;margin:auto;padding:18px 16px 42px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;background:#0c0c0c;border:1px solid var(--line);padding:6px;border-radius:16px}.tabs button{border:0;background:transparent;color:#aaa;padding:12px 10px;border-radius:11px;font-weight:800}.tabs button.active{background:var(--red);color:#fff;box-shadow:0 6px 20px #cd1c1840}.card{background:linear-gradient(145deg,#151515,#0d0d0d);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 12px 35px #0008}.eyebrow{color:#999;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}.hero{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.hero h1{margin:3px 0 0;font-size:27px;line-height:1.05}.hero p{margin:6px 0 0;color:var(--muted);font-size:13px}.upload{border:1px dashed #454545;border-radius:15px;padding:14px;background:#0a0a0a}.upload input{width:100%;color:#ddd;font-size:13px}.upload input::file-selector-button{background:#fff;color:#000;border:0;border-radius:9px;padding:9px 11px;font-weight:800;margin-right:9px}.tiny{font-size:11px;color:var(--muted);margin-top:8px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:#0a0a0a;border:1px solid #222;border-radius:14px;padding:12px;text-align:center}.stat span{display:block;color:#8e8e8e;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.stat b{display:block;font-size:23px;margin-top:3px}.stat:last-child b{color:var(--red2)}.progress{height:10px;background:#252525;border-radius:20px;overflow:hidden;margin:13px 0 6px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#ff4a45);box-shadow:0 0 12px #cd1c1870}.progressText{text-align:right;color:#aaa;font-size:11px}.scanWrap{position:relative;margin-top:12px}.scan{width:100%;font-size:20px;padding:18px 48px 18px 18px;border:2px solid #2d2d2d;border-radius:16px;background:#080808;color:#fff;outline:none;text-align:left;box-shadow:inset 0 0 0 1px #000}.scan:focus{border-color:var(--red);box-shadow:0 0 0 4px #cd1c1820}.scan::placeholder{color:#666}.scanIcon{position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:22px;color:#888}.ready{display:flex;align-items:center;gap:7px;margin-top:9px;color:#aaa;font-size:11px}.ready i{width:7px;height:7px;background:var(--green);border-radius:50%;display:block}.result{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;border-radius:18px;margin-top:12px;background:#0a0a0a;border:1px solid #292929}.result .big{font-size:28px;font-weight:900;letter-spacing:.02em}.result .route{font-size:34px;font-weight:900;margin-top:5px;color:#fff}.result.good{background:linear-gradient(145deg,#0d2a1e,#09140f);border-color:#20c979}.result.warn{background:linear-gradient(145deg,#2a210d,#141006);border-color:var(--yellow)}.result.bad{background:linear-gradient(145deg,#2b0d0c,#130707);border-color:var(--red)}.result.info{background:linear-gradient(145deg,#151515,#0b0b0b)}.result .sub{color:#aaa;margin-top:7px;font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.primary,.secondary{border:0;border-radius:12px;padding:12px 14px;font-weight:800}.primary{background:var(--red);color:#fff}.secondary{background:#242424;color:#fff}.primary:hover{background:var(--red2)}.fileRow{padding:11px 12px;border:1px solid #2a2a2a;background:#0b0b0b;border-radius:12px;margin-top:8px}.fileRow b{display:block;font-size:13px}.muted{color:var(--muted)}.statusBadge{display:inline-block;padding:7px 10px;border-radius:99px;font-weight:900;margin-top:8px;background:#262626;color:#fff;font-size:11px}.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.sectionTitle h2{margin:0;font-size:17px}.sectionTitle span{font-size:10px;color:#777;text-transform:uppercase}.menuGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.menuCard{min-height:150px;border-radius:18px;border:1px solid #2a2a2a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:#101010}.menuCard.main{background:linear-gradient(145deg,var(--red),#8e100e);border-color:#ff514d}.menuCard .icon{font-size:28px}.menuCard h2{margin:8px 0 3px;font-size:22px}.menuCard p{margin:0;color:#ddd;font-size:12px}.menuCard .arrow{align-self:flex-end;font-size:24px}.hidden{display:none!important}.divider{height:1px;background:#222;margin:14px 0}@media(max-width:680px){header{padding:13px 15px}.shell{padding:14px 12px 30px}.stats{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:24px}.result .big{font-size:25px}.result .route{font-size:30px}.menuGrid{grid-template-columns:1fr}.menuCard{min-height:125px}}@media(min-width:800px){body{padding-bottom:30px}.shell{padding-top:22px}.result{min-height:190px}.scan{font-size:22px}}
 </style>
 </head>
 <body>
-<header>
-<h1>Conferência de Pacotes</h1>
-<small>V6 • Encontrar não alocados + Backlog</small>
-</header>
-
-<nav>
-<button id="tabPending" class="active" onclick="showTab('pending')">🔎 Encontrar não alocados</button>
-<button id="tabBacklog" onclick="showTab('backlog')">📋 Backlog</button>
-</nav>
-
-<main>
+<header><div class="brand"><div class="brandMark"></div><div><strong>ARGUS</strong><small>Conferência de pacotes</small></div></div><div class="live"><i></i><span>Leitura ativa</span></div></header>
+<main class="shell">
+<nav class="tabs"><button id="tabPending" class="active" onclick="showTab('pending')">🔎 Encontrar não alocados</button><button id="tabBacklog" onclick="showTab('backlog')">▣ Backlog</button></nav>
 <section id="pending">
 <div class="card">
-<h2>Base de pacotes</h2>
-<p class="muted">Importe o CSV baixado do sistema.</p>
-<input id="pendingFile" type="file" accept=".csv,text/csv">
-<div id="pendingInfo" class="muted" style="margin-top:10px">Nenhum arquivo carregado.</div>
+<div class="hero"><div><div class="eyebrow">Operação</div><h1>Encontrar não alocados</h1><p>Carregue a base e confira os pacotes com leitura rápida.</p></div><button class="secondary" type="button" onclick="unlockAudio();this.textContent='🔊 Som ativado'">🔊 Som</button></div>
+<div class="upload"><input id="pendingFile" type="file" accept=".csv,text/csv"><div id="pendingInfo" class="tiny">Nenhum arquivo carregado.</div></div>
 </div>
-
-<div class="card">
-<div class="stats">
-<div class="stat">Base<b id="pTotal">0</b></div>
-<div class="stat">Pendentes<b id="pEligible">0</b></div>
-<div class="stat">Encontrados<b id="pFound">0</b></div>
-<div class="stat">Restantes<b id="pRemaining">0</b></div>
-</div>
-<div class="progress"><i id="pBar"></i></div>
-<div id="operationProgress" class="muted" style="text-align:center">0% concluído</div>
-</div>
-
-<div class="card">
-<h2>Escanear pacote</h2>
-<button class="secondary" type="button" onclick="unlockAudio();this.textContent='🔊 Som ativado'">🔊 Ativar som</button>
-<input id="pendingScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Bipe ou digite o ID">
-<div id="pendingResult" class="result">Aguardando leitura...</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-<button class="primary" id="downloadHistory" type="button">📥 Baixar histórico CSV</button>
-<button class="secondary" id="clearHistory" type="button">🗑️ Limpar histórico</button>
-</div>
-</div>
-<div class="card">
-<h2>Últimas leituras</h2>
-<div id="historyList" class="muted">Nenhuma leitura ainda.</div>
-</div>
+<div class="card"><div class="sectionTitle"><h2>Progresso da operação</h2><span>Base atual</span></div><div class="stats"><div class="stat"><span>Total</span><b id="pTotal">0</b></div><div class="stat"><span>Pendentes</span><b id="pEligible">0</b></div><div class="stat"><span>Encontrados</span><b id="pFound">0</b></div><div class="stat"><span>Restantes</span><b id="pRemaining">0</b></div></div><div class="progress"><i id="pBar"></i></div><div id="operationProgress" class="progressText">0% concluído</div></div>
+<div class="card"><div class="sectionTitle"><h2>Modo operação</h2><span>Scanner pronto</span></div><div class="scanWrap"><input id="pendingScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Aproxime o código de barras..."><span class="scanIcon">⌁</span></div><div class="ready"><i></i><span>Aguardando leitura automática</span></div><div id="pendingResult" class="result"><div class="big">AGUARDANDO LEITURA</div><div class="sub">O próximo pacote aparecerá aqui</div></div><div class="actions"><button class="primary" id="downloadHistory" type="button">↓ Baixar histórico CSV</button><button class="secondary" id="clearHistory" type="button">Limpar histórico</button></div></div>
+<div class="card"><div class="sectionTitle"><h2>Últimas leituras</h2><span>Histórico local</span></div><div id="historyList" class="muted">Nenhuma leitura ainda.</div></div>
 </section>
-
 <section id="backlog" class="hidden">
-<div class="card">
-<h2>Backlog</h2>
-<p>Adicione os arquivos do Backlog. No celular, você pode selecionar <b>um arquivo por vez</b>; cada novo arquivo fica acumulado na lista. O sistema identifica a categoria pelos próprios status/substatus.</p>
-<input id="backlogFiles" type="file" accept=".csv,text/csv">
-<div style="margin-top:10px">
-<button class="secondary" id="clearBacklogFiles" type="button">Limpar arquivos</button>
-</div>
-<div id="backlogFileList" style="margin-top:10px"></div>
-<div id="backlogInfo" class="muted" style="margin-top:10px">Nenhum arquivo carregado.</div>
-</div>
-
-<div class="card">
-<h2>Escanear pacote</h2>
-<input id="backlogScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Bipe ou digite o ID">
-<div id="backlogResult" class="result">Aguardando leitura...</div>
-</div>
-
-<div class="card">
-<h2>Arquivos/status identificados</h2>
-<div id="backlogStats" class="muted">Nenhum arquivo carregado.</div>
-</div>
+<div class="card"><div class="hero"><div><div class="eyebrow">Consulta</div><h1>Backlog</h1><p>Adicione os arquivos e deixe o ARGUS identificar os status.</p></div></div><div class="upload"><input id="backlogFiles" type="file" accept=".csv,text/csv"><div class="tiny">No celular, selecione um arquivo por vez. Os arquivos ficam acumulados.</div></div><div class="actions"><button class="secondary" id="clearBacklogFiles" type="button">Limpar arquivos</button></div><div id="backlogFileList" style="margin-top:10px"></div><div id="backlogInfo" class="tiny">Nenhum arquivo carregado.</div></div>
+<div class="card"><div class="sectionTitle"><h2>Consultar pacote</h2><span>Sem áudio</span></div><div class="scanWrap"><input id="backlogScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Bipe ou digite o ID..."><span class="scanIcon">⌁</span></div><div id="backlogResult" class="result"><div class="big">AGUARDANDO LEITURA</div><div class="sub">Consulta de status do backlog</div></div></div>
+<div class="card"><div class="sectionTitle"><h2>Status identificados</h2><span>Resumo</span></div><div id="backlogStats" class="muted">Nenhum arquivo carregado.</div></div>
 </section>
 </main>
-
 <script>
 const state={
  pending:new Map(), found:new Set(),
