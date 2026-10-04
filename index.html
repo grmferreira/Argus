@@ -40,7 +40,7 @@ button.secondary{background:#e5e7eb;border:0;padding:10px 14px;border-radius:9px
 <body>
 <header>
 <h1>Conferência de Pacotes</h1>
-<small>V4 • Encontrar não alocados + Backlog</small>
+<small>V6 • Encontrar não alocados + Backlog</small>
 </header>
 
 <nav>
@@ -248,6 +248,7 @@ function pendingLookup(raw){
   addHistory({datetime,id,route:'',result:'Não encontrado',location:'',duplicate:false});return
  }
  if(item.location==='caminho para a estacao'){
+  playFound();
   r.className='result warn';r.innerHTML=`<div class="big">A CAMINHO</div><div class="route">${item.route||'Rota não informada'}</div><div>Está a caminho da estação e não entra na contagem.</div>`;
   addHistory({datetime,id,route:item.route,result:'A caminho',location:'Caminho para a estação',duplicate:false});return
  }
