@@ -11,6 +11,7 @@
 .result .backlogResultId{font-size:clamp(28px,5vw,52px);font-weight:850;letter-spacing:.03em;line-height:1;word-break:break-all;color:#f5f5f5}
 .result .backlogResultStatus{font-size:clamp(40px,7vw,72px);font-weight:950;line-height:1.02;margin-top:14px;letter-spacing:.01em}
 .backlogResultStatus.status-yellow{color:#f2b94b}.backlogResultStatus.status-blue{color:#338cff}.backlogResultStatus.status-green{color:#20c979}.backlogResultStatus.status-red{color:#e33b35}.backlogResultStatus.status-purple{color:#a06cff}.backlogResultStatus.status-white{color:#f5f5f5}
+.backlogDispatchInfo{display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:12px;color:#d8d8d8;font-size:15px;font-weight:700}.backlogDispatchInfo span{display:inline-block}.backlogDispatchInfo b{color:#fff}.backlogOverdue{color:#e33b35!important;font-weight:900}
 .sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.sectionTitle h2{margin:0;font-size:17px}.sectionTitle span{font-size:10px;color:#777;text-transform:uppercase}.menuGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.menuCard{min-height:150px;border-radius:18px;border:1px solid #2a2a2a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:#101010}.menuCard.main{background:linear-gradient(145deg,var(--red),#8e100e);border-color:#ff514d}.menuCard .icon{font-size:28px}.menuCard h2{margin:8px 0 3px;font-size:22px}.menuCard p{margin:0;color:#ddd;font-size:12px}.menuCard .arrow{align-self:flex-end;font-size:24px}.hidden{display:none!important}.divider{height:1px;background:#222;margin:14px 0}@media(max-width:680px){header{padding:13px 15px}.shell{padding:14px 12px 30px}.stats{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:24px}.result .big{font-size:25px}.result .route{font-size:30px}.menuGrid{grid-template-columns:1fr}.menuCard{min-height:125px}}@media(min-width:800px){body{padding-bottom:30px}.shell{padding-top:22px}.result{min-height:190px}.scan{font-size:22px}}
 </style>
 </head>
@@ -291,8 +292,11 @@ async function rebuildBacklog(){
     source:f.name,
     rawStatus:String(row[hm['status do envio']]??row[hm['status']]??'').trim(),
     rawSub:String(row[hm['subtatus do envio']]??row[hm['substatus']]??row[hm['substatus do envio']]??'').trim(),
-    route:hm['rota']!==undefined?String(row[hm['rota']]??'').trim():''
+    route:hm['rota']!==undefined?String(row[hm['rota']]??'').trim():'',
+    promiseRaw:hm['promessa de entrega']!==undefined?String(row[hm['promessa de entrega']]??'').trim():String(row[6]??'').trim(),
+    postal:hm['codigo postal']!==undefined?String(row[hm['codigo postal']]??'').trim():(hm['código postal']!==undefined?String(row[hm['código postal']]??'').trim():String(row[20]??'').trim())
    };
+   detail.promiseFinal=parsePromiseFinal(detail.promiseRaw);
 
    if(!state.backlog.has(id))state.backlog.set(id,[]);
    if(!state.backlog.get(id).some(x=>x.status===status&&x.source===f.name)){
@@ -367,6 +371,31 @@ function backlogStatusColor(status){
  if(s.includes('DEVOLVER')||s.includes('PARADO')||s.includes('SOLUÇÃO')) return 'status-yellow';
  return 'status-white';
 }
+function parsePromiseFinal(value){
+ const text=String(value??'').trim();
+ if(!text)return null;
+ // A promessa vem normalmente como: 29-09-2026/02-10-2026
+ const parts=text.split('/').map(x=>x.trim()).filter(Boolean);
+ const final=parts.length?parts[parts.length-1]:text;
+ const m=final.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{4})$/);
+ if(!m)return null;
+ const day=Number(m[1]), month=Number(m[2]), year=Number(m[3]);
+ const d=new Date(year,month-1,day);
+ if(d.getFullYear()!==year||d.getMonth()!==month-1||d.getDate()!==day)return null;
+ return {date:d,day:String(day).padStart(2,'0'),month:String(month).padStart(2,'0'),year};
+}
+function daysPastPromise(promise){
+ if(!promise)return 0;
+ const now=new Date();
+ const today= new Date(now.getFullYear(),now.getMonth(),now.getDate());
+ const diff=today-promise.date;
+ return Math.floor(diff/86400000);
+}
+function isDispatchOverdue(detail){
+ if(!detail || detail.status!=='PARA DESPACHAR' || !detail.promiseFinal)return false;
+ return daysPastPromise(detail.promiseFinal)>=3;
+}
+
 function backlogLookup(raw){
  const id=raw.trim();if(!id)return;
  const r=document.getElementById('backlogResult');
@@ -380,9 +409,19 @@ function backlogLookup(raw){
  }
  const unique=[...new Map(items.map(x=>[x.status+'|'+x.source,x])).values()];
  const statuses=unique.map(x=>x.status);
+ const dispatch=unique.find(x=>x.status==='PARA DESPACHAR');
+ const overdue=dispatch && isDispatchOverdue(dispatch);
  r.className='result info';
- r.innerHTML=`<div class="backlogResultId">${id}</div>
+ let html=`<div class="backlogResultId">${id}</div>
  <div class="backlogResultStatus ${backlogStatusColor(statuses[0])}">${statuses.map(st=>`<span class="${backlogStatusColor(st)}">${st}</span>`).join(' <span style="color:#777;font-size:.55em">•</span> ')}</div>`;
+ if(dispatch){
+   const promise=dispatch.promiseFinal;
+   const promiseText=promise?`Promessa: ${promise.day}/${promise.month}`:'Promessa: não informada';
+   const postal=dispatch.postal?`Código postal: ${dispatch.postal}`:'Código postal: não informado';
+   html+=`<div class="backlogDispatchInfo ${overdue?'backlogOverdue':''}"><span>${promiseText}</span><span>${postal}</span>${overdue?'<span>⚠ 3+ dias após a promessa</span>':''}</div>`;
+ }
+ r.innerHTML=html;
+ if(overdue) playFound();
  unique.forEach(x=>addBacklogHistory({id,status:x.status,datetime,source:x.source}));
 }
 setupScan(document.getElementById('backlogScan'),backlogLookup);
