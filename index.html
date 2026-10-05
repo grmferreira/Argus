@@ -7,7 +7,9 @@
 <title>ARGUS — Conferência de Pacotes</title>
 <style>
 :root{--red:#CD1C18;--red2:#f02a25;--black:#050505;--panel:#101010;--panel2:#171717;--line:#292929;--white:#fff;--muted:#a4a4a4;--green:#20c979;--yellow:#f2b94b;--blue:#338cff}
-*{box-sizing:border-box}html{background:var(--black)}body{margin:0;background:radial-gradient(circle at 50% -10%,#241010 0,#080808 35%,#000 75%);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}header{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.94);backdrop-filter:blur(14px);border-bottom:1px solid #242424;padding:14px max(16px,calc((100vw - 980px)/2));display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brandMark{width:42px;height:30px;display:block;object-fit:contain;object-position:center}.brand strong{font-size:22px;letter-spacing:.08em}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase}.homeLogo{display:flex;justify-content:center;align-items:center;padding:4px 18px 18px}.homeLogo img{width:min(520px,88vw);max-height:220px;object-fit:contain;filter:none}.live{display:flex;align-items:center;gap:7px;color:#ddd;font-size:12px}.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #20c979;display:block}.shell{max-width:980px;margin:auto;padding:18px 16px 42px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;background:#0c0c0c;border:1px solid var(--line);padding:6px;border-radius:16px}.tabs button{border:0;background:transparent;color:#aaa;padding:12px 10px;border-radius:11px;font-weight:800}.tabs button.active{background:var(--red);color:#fff;box-shadow:0 6px 20px #cd1c1840}.card{background:linear-gradient(145deg,#151515,#0d0d0d);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 12px 35px #0008}.eyebrow{color:#999;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}.hero{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.hero h1{margin:3px 0 0;font-size:27px;line-height:1.05}.hero p{margin:6px 0 0;color:var(--muted);font-size:13px}.upload{border:1px dashed #454545;border-radius:15px;padding:14px;background:#0a0a0a}.upload input{width:100%;color:#ddd;font-size:13px}.upload input::file-selector-button{background:#fff;color:#000;border:0;border-radius:9px;padding:9px 11px;font-weight:800;margin-right:9px}.tiny{font-size:11px;color:var(--muted);margin-top:8px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:#0a0a0a;border:1px solid #222;border-radius:14px;padding:12px;text-align:center}.stat span{display:block;color:#8e8e8e;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.stat b{display:block;font-size:23px;margin-top:3px}.stat:last-child b{color:var(--red2)}.progress{height:10px;background:#252525;border-radius:20px;overflow:hidden;margin:13px 0 6px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#ff4a45);box-shadow:0 0 12px #cd1c1870}.progressText{text-align:right;color:#aaa;font-size:11px}.scanWrap{position:relative;margin-top:12px}.scan{width:100%;font-size:20px;padding:18px 48px 18px 18px;border:2px solid #2d2d2d;border-radius:16px;background:#080808;color:#fff;outline:none;text-align:left;box-shadow:inset 0 0 0 1px #000}.scan:focus{border-color:var(--red);box-shadow:0 0 0 4px #cd1c1820}.scan::placeholder{color:#666}.scanIcon{position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:22px;color:#888}.ready{display:flex;align-items:center;gap:7px;margin-top:9px;color:#aaa;font-size:11px}.ready i{width:7px;height:7px;background:var(--green);border-radius:50%;display:block}.result{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;border-radius:18px;margin-top:12px;background:#0a0a0a;border:1px solid #292929}.result .big{font-size:28px;font-weight:900;letter-spacing:.02em}.result .route{font-size:34px;font-weight:900;margin-top:5px;color:#fff}.result.good{background:linear-gradient(145deg,#0d2a1e,#09140f);border-color:#20c979}.result.warn{background:linear-gradient(145deg,#2a210d,#141006);border-color:var(--yellow)}.result.bad{background:linear-gradient(145deg,#2b0d0c,#130707);border-color:var(--red)}.result.info{background:linear-gradient(145deg,#151515,#0b0b0b)}.result .sub{color:#aaa;margin-top:7px;font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.primary,.secondary{border:0;border-radius:12px;padding:12px 14px;font-weight:800}.primary{background:var(--red);color:#fff}.secondary{background:#242424;color:#fff}.primary:hover{background:var(--red2)}.fileRow{padding:11px 12px;border:1px solid #2a2a2a;background:#0b0b0b;border-radius:12px;margin-top:8px}.fileRow b{display:block;font-size:13px}.muted{color:var(--muted)}.statusBadge{display:inline-block;padding:7px 10px;border-radius:99px;font-weight:900;margin-top:8px;background:#262626;color:#fff;font-size:11px}.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.sectionTitle h2{margin:0;font-size:17px}.sectionTitle span{font-size:10px;color:#777;text-transform:uppercase}.menuGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.menuCard{min-height:150px;border-radius:18px;border:1px solid #2a2a2a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:#101010}.menuCard.main{background:linear-gradient(145deg,var(--red),#8e100e);border-color:#ff514d}.menuCard .icon{font-size:28px}.menuCard h2{margin:8px 0 3px;font-size:22px}.menuCard p{margin:0;color:#ddd;font-size:12px}.menuCard .arrow{align-self:flex-end;font-size:24px}.statusRow{display:flex;align-items:center;gap:10px;padding:10px 12px;margin:6px 0;background:#0a0a0a;border:1px solid #242424;border-radius:12px}.statusDot{width:10px;height:10px;border-radius:50%;flex:0 0 auto}.statusRow b{font-size:13px}.statusRow small{display:block;color:#777;margin-top:2px}.backlogHistoryItem{border-left:4px solid #555;padding:10px 12px;margin:7px 0;background:#0a0a0a;border-radius:0 12px 12px 0}.backlogHistoryItem b{font-size:14px}.hidden{display:none!important}.divider{height:1px;background:#222;margin:14px 0}@media(max-width:680px){header{padding:13px 15px}.shell{padding:14px 12px 30px}.stats{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:24px}.result .big{font-size:25px}.result .route{font-size:30px}.menuGrid{grid-template-columns:1fr}.menuCard{min-height:125px}}@media(min-width:800px){body{padding-bottom:30px}.shell{padding-top:22px}.result{min-height:190px}.scan{font-size:22px}}
+*{box-sizing:border-box}html{background:var(--black)}body{margin:0;background:radial-gradient(circle at 50% -10%,#241010 0,#080808 35%,#000 75%);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}header{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.94);backdrop-filter:blur(14px);border-bottom:1px solid #242424;padding:14px max(16px,calc((100vw - 980px)/2));display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brandMark{width:42px;height:30px;display:block;object-fit:contain;object-position:center}.brand strong{font-size:22px;letter-spacing:.08em}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase}.homeLogo{display:flex;justify-content:center;align-items:center;padding:4px 18px 18px}.homeLogo img{width:min(520px,88vw);max-height:220px;object-fit:contain;filter:drop-shadow(0 14px 28px rgba(205,28,24,.16))}.live{display:flex;align-items:center;gap:7px;color:#ddd;font-size:12px}.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #20c979;display:block}.shell{max-width:980px;margin:auto;padding:18px 16px 42px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;background:#0c0c0c;border:1px solid var(--line);padding:6px;border-radius:16px}.tabs button{border:0;background:transparent;color:#aaa;padding:12px 10px;border-radius:11px;font-weight:800}.tabs button.active{background:var(--red);color:#fff;box-shadow:0 6px 20px #cd1c1840}.card{background:linear-gradient(145deg,#151515,#0d0d0d);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 12px 35px #0008}.eyebrow{color:#999;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}.hero{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.hero h1{margin:3px 0 0;font-size:27px;line-height:1.05}.hero p{margin:6px 0 0;color:var(--muted);font-size:13px}.upload{border:1px dashed #454545;border-radius:15px;padding:14px;background:#0a0a0a}.upload input{width:100%;color:#ddd;font-size:13px}.upload input::file-selector-button{background:#fff;color:#000;border:0;border-radius:9px;padding:9px 11px;font-weight:800;margin-right:9px}.tiny{font-size:11px;color:var(--muted);margin-top:8px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:#0a0a0a;border:1px solid #222;border-radius:14px;padding:12px;text-align:center}.stat span{display:block;color:#8e8e8e;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.stat b{display:block;font-size:23px;margin-top:3px}.stat:last-child b{color:var(--red2)}.progress{height:10px;background:#252525;border-radius:20px;overflow:hidden;margin:13px 0 6px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#ff4a45);box-shadow:0 0 12px #cd1c1870}.progressText{text-align:right;color:#aaa;font-size:11px}.scanWrap{position:relative;margin-top:12px}.scan{width:100%;font-size:20px;padding:18px 48px 18px 18px;border:2px solid #2d2d2d;border-radius:16px;background:#080808;color:#fff;outline:none;text-align:left;box-shadow:inset 0 0 0 1px #000}.scan:focus{border-color:var(--red);box-shadow:0 0 0 4px #cd1c1820}.scan::placeholder{color:#666}.scanIcon{position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:22px;color:#888}.ready{display:flex;align-items:center;gap:7px;margin-top:9px;color:#aaa;font-size:11px}.ready i{width:7px;height:7px;background:var(--green);border-radius:50%;display:block}.result{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;border-radius:18px;margin-top:12px;background:#0a0a0a;border:1px solid #292929}.result .big{font-size:28px;font-weight:900;letter-spacing:.02em}.result .route{font-size:34px;font-weight:900;margin-top:5px;color:#fff}.result.good{background:linear-gradient(145deg,#0d2a1e,#09140f);border-color:#20c979}.result.warn{background:linear-gradient(145deg,#2a210d,#141006);border-color:var(--yellow)}.result.bad{background:linear-gradient(145deg,#2b0d0c,#130707);border-color:var(--red)}.result.info{background:linear-gradient(145deg,#151515,#0b0b0b)}.result .sub{color:#aaa;margin-top:7px;font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.primary,.secondary{border:0;border-radius:12px;padding:12px 14px;font-weight:800}.primary{background:var(--red);color:#fff}.secondary{background:#242424;color:#fff}.primary:hover{background:var(--red2)}.fileRow{padding:11px 12px;border:1px solid #2a2a2a;background:#0b0b0b;border-radius:12px;margin-top:8px}.fileRow b{display:block;font-size:13px}.muted{color:var(--muted)}.statusBadge{display:inline-block;padding:7px 10px;border-radius:99px;font-weight:900;margin-top:8px;background:#262626;color:#fff;font-size:11px}.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.sectionTitle h2{margin:0;font-size:17px}.sectionTitle span{font-size:10px;color:#777;text-transform:uppercase}.menuGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.menuCard{min-height:150px;border-radius:18px;border:1px solid #2a2a2a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:#101010}.menuCard.main{background:linear-gradient(145deg,var(--red),#8e100e);border-color:#ff514d}.menuCard .icon{font-size:28px}.menuCard h2{margin:8px 0 3px;font-size:22px}.menuCard p{margin:0;color:#ddd;font-size:12px}.menuCard .arrow{align-self:flex-end;font-size:24px}.hidden{display:none!important}.divider{height:1px;background:#222;margin:14px 0}@media(max-width:680px){header{padding:13px 15px}.shell{padding:14px 12px 30px}.stats{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:24px}.result .big{font-size:25px}.result .route{font-size:30px}.menuGrid{grid-template-columns:1fr}.menuCard{min-height:125px}}@media(min-width:800px){body{padding-bottom:30px}.shell{padding-top:22px}.result{min-height:190px}.scan{font-size:22px}}
+
+.statusRow{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #242424;background:#0b0b0b;border-radius:12px;margin-top:8px;border-left:5px solid #666}.statusRow .statusDot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}.statusRow .statusText{font-weight:850}.statusBadge.status-BLOQUEADO,.statusRow.status-BLOQUEADO{border-color:#e33b35}.status-BLOQUEADO .statusDot{background:#e33b35}.statusBadge.status-COLETADO,.statusRow.status-COLETADO{border-color:#9b59b6}.status-COLETADO .statusDot{background:#9b59b6}.statusBadge.status-PARA-DEVOLVER,.statusRow.status-PARA-DEVOLVER{border-color:#f39c12}.status-PARA-DEVOLVER .statusDot{background:#f39c12}.statusBadge.status-AGUARDANDO-DEVOLUÇÃO,.statusRow.status-AGUARDANDO-DEVOLUÇÃO{border-color:#f1c40f}.status-AGUARDANDO-DEVOLUÇÃO .statusDot{background:#f1c40f}.statusBadge.status-PARA-DESPACHAR,.statusRow.status-PARA-DESPACHAR{border-color:#3498db}.status-PARA-DESPACHAR .statusDot{background:#3498db}.statusBadge.status-A-CAMINHO,.statusRow.status-A-CAMINHO{border-color:#2ecc71}.status-A-CAMINHO .statusDot{background:#2ecc71}.statusBadge.status-EM-ROTA,.statusRow.status-EM-ROTA{border-color:#7f8c8d}.status-EM-ROTA .statusDot{background:#7f8c8d}.statusBadge.status-BUFFER,.statusRow.status-BUFFER{border-color:#8e44ad}.status-BUFFER .statusDot{background:#8e44ad}.statusBadge.status-PARADO-NA-ESTAÇÃO,.statusRow.status-PARADO-NA-ESTAÇÃO{border-color:#c0392b}.status-PARADO-NA-ESTAÇÃO .statusDot{background:#c0392b}.statusBadge.status-FALTANTE,.statusRow.status-FALTANTE{border-color:#e91e63}.status-FALTANTE .statusDot{background:#e91e63}.statusBadge.status-SOLUÇÃO-DE-PROBLEMAS,.statusRow.status-SOLUÇÃO-DE-PROBLEMAS{border-color:#ff6f61}.status-SOLUÇÃO-DE-PROBLEMAS .statusDot{background:#ff6f61}.statusBadge.status-AVARIADO,.statusRow.status-AVARIADO{border-color:#d35400}.status-AVARIADO .statusDot{background:#d35400}.statusBadge.status-EM-ROTA-DE-ENTREGA,.statusRow.status-EM-ROTA-DE-ENTREGA{border-color:#7f8c8d}.status-EM-ROTA-DE-ENTREGA .statusDot{background:#7f8c8d}.statusBadge{border:1px solid #333}.historyItem{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #222}.historyItem:last-child{border-bottom:0}.historyItem .hid{font-weight:850}.historyItem small{display:block;color:#888;margin-top:2px}.sheetState{font-size:11px;margin-top:8px;color:#888}.sheetState.ok{color:#2ecc71}.sheetState.err{color:#ff6b63}
 </style>
 </head>
 <body>
@@ -28,44 +30,17 @@
 <div class="card"><div class="hero"><div><div class="eyebrow">Consulta</div><h1>Backlog</h1><p>Adicione os arquivos e deixe o ARGUS identificar os status.</p></div></div><div class="upload"><input id="backlogFiles" type="file" accept=".csv,text/csv"><div class="tiny">No celular, selecione um arquivo por vez. Os arquivos ficam acumulados.</div></div><div class="actions"><button class="secondary" id="clearBacklogFiles" type="button">Limpar arquivos</button></div><div id="backlogFileList" style="margin-top:10px"></div><div id="backlogInfo" class="tiny">Nenhum arquivo carregado.</div></div>
 <div class="card"><div class="sectionTitle"><h2>Consultar pacote</h2><span>Sem áudio</span></div><div class="scanWrap"><input id="backlogScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Bipe ou digite o ID..."><span class="scanIcon">⌁</span></div><div id="backlogResult" class="result"><div class="big">AGUARDANDO LEITURA</div><div class="sub">Consulta de status do backlog</div></div></div>
 <div class="card"><div class="sectionTitle"><h2>Status identificados</h2><span>Resumo</span></div><div id="backlogStats" class="muted">Nenhum arquivo carregado.</div></div>
-<div class="card"><div class="sectionTitle"><h2>Histórico do Backlog</h2><span>Consultas</span></div><div class="actions"><button class="secondary" id="clearBacklogHistory" type="button">Limpar histórico</button></div><div id="backlogHistoryList" class="muted">Nenhuma consulta ainda.</div></div>
+<div class="card"><div class="sectionTitle"><h2>Histórico do Backlog</h2><span id="backlogHistoryCount">0 consultas</span></div><div id="backlogHistory" class="muted">Nenhuma consulta realizada.</div><div class="actions"><button class="secondary" id="clearBacklogHistory" type="button">Limpar histórico</button></div></div>
 </section>
 </main>
 <script>
+const GOOGLE_SHEETS_WEBAPP_URL = 'https://script.google.com/a/macros/mercadolivre.com/s/AKfycbzmxlMpfnDpsAQqgwaSZfHhXMJuHCIoGcDTPbvvvtzGDmNggjVWKw9-d2xt95e8lHr5/exec';
+const GOOGLE_SHEETS_TOKEN = 'ARGUS_BACKLOG_2026';
 const state={
  pending:new Map(), found:new Set(),
  backlog:new Map(), backlogFiles:0,
- history:JSON.parse(localStorage.getItem('conferenciaHistorico')||'[]'),
- backlogHistory:JSON.parse(localStorage.getItem('argusBacklogHistorico')||'[]')
+ history:JSON.parse(localStorage.getItem('conferenciaHistorico')||'[]')
 };
-
-// Integração com Google Sheets. Depois de publicar o Apps Script, cole aqui a URL /exec.
-const SHEETS_WEB_APP_URL = '';
-const SHEETS_TOKEN = '';
-
-async function sendBacklogIdToSheet(id){
- if(!SHEETS_WEB_APP_URL) return {ok:false,skipped:true};
- try{
-  const res=await fetch(SHEETS_WEB_APP_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({id:String(id),token:SHEETS_TOKEN})});
-  const data=await res.json().catch(()=>({}));
-  return {ok:res.ok && data.ok!==false,data};
- }catch(err){
-  console.warn('Falha ao enviar ID para Google Sheets',err);
-  return {ok:false,error:String(err)};
- }
-}
-
-function backlogStatusClass(status){
- const map={'BLOQUEADO':'#CD1C18','COLETADO':'#9b59b6','PARA DEVOLVER':'#f28c28','AGUARDANDO DEVOLUÇÃO':'#f2c94c','PARA DESPACHAR':'#3498db','A CAMINHO':'#2ecc71','EM ROTA':'#2ecc71','BUFFER':'#00a6b4','PARADO NA ESTAÇÃO':'#7f8c8d','FALTANTE':'#e84393','SOLUÇÃO DE PROBLEMAS':'#ff6b9a','AVARIADO':'#e74c3c','COLETA PARA DEVOLUÇÃO':'#f28c28'};
- return map[status]||'#777';
-}
-function saveBacklogHistory(){try{localStorage.setItem('argusBacklogHistorico',JSON.stringify(state.backlogHistory))}catch(e){} renderBacklogHistory()}
-function addBacklogHistory(x){state.backlogHistory.unshift(x);if(state.backlogHistory.length>1000)state.backlogHistory=state.backlogHistory.slice(0,1000);saveBacklogHistory()}
-function renderBacklogHistory(){
- const el=document.getElementById('backlogHistoryList');if(!el)return;
- if(!state.backlogHistory.length){el.innerHTML='Nenhuma consulta ainda.';return}
- el.innerHTML=state.backlogHistory.slice(0,30).map(x=>{const c=backlogStatusClass(x.status);return `<div class=\"backlogHistoryItem\" style=\"border-left-color:${c}\"><b>${x.id}</b> — <strong style=\"color:${c}\">${x.status}</strong><small>${x.datetime}${x.duplicate?' • CONSULTA REPETIDA':''}</small></div>`}).join('')
-}
 
 function showTab(tab){
  document.getElementById('pending').classList.toggle('hidden',tab!=='pending');
@@ -243,24 +218,21 @@ setupScan(document.getElementById('pendingScan'),pendingLookup);
 function inferStatus(row,hm){
  const status=normalize(row[hm['status do envio']]??row[hm['status']]??'');
  const sub=normalize(row[hm['subtatus do envio']]??row[hm['substatus do envio']]??row[hm['substatus']]??'');
- if(status==='on_route') return 'EM ROTA';
- if(status==='on_way') return 'A CAMINHO';
- if(sub==='waiting_return') return 'AGUARDANDO DEVOLUÇÃO';
- if(sub==='for_return') return 'PARA DEVOLVER';
- if(sub==='sorting') return 'PARA DESPACHAR';
- if(sub==='claimed') return 'COLETADO';
- if(sub==='blocked') return 'BLOQUEADO';
- if(sub==='buffered') return 'BUFFER';
- if(sub==='stale') return 'PARADO NA ESTAÇÃO';
- if(sub==='missing') return 'FALTANTE';
- if(sub==='problem_solving') return 'SOLUÇÃO DE PROBLEMAS';
- if(sub==='damaged_svc'||sub==='damaged') return 'AVARIADO';
- if(sub==='for_return_pickup') return 'COLETA PARA DEVOLUÇÃO';
- if(sub==='delivered'||sub==='delivered_place') return 'ENTREGUE';
- if(status==='at_station') return sub?sub.replaceAll('_',' ').toUpperCase():'NA ESTAÇÃO';
+ if(status==='on_route'||status.includes('on_route'))return 'EM ROTA';
+ if(status==='on_way'||status.includes('on_way'))return 'A CAMINHO';
+ if(sub==='waiting_return'||sub.includes('waiting_return'))return 'AGUARDANDO DEVOLUÇÃO';
+ if(sub==='for_return'||sub.includes('for_return'))return 'PARA DEVOLVER';
+ if(sub==='sorting'||sub.includes('sorting'))return 'PARA DESPACHAR';
+ if(sub==='claimed'||sub.includes('claimed'))return 'COLETADO';
+ if(sub==='blocked'||sub.includes('blocked'))return 'BLOQUEADO';
+ if(sub==='buffered'||sub.includes('buffered'))return 'BUFFER';
+ if(sub==='stale'||sub.includes('stale'))return 'PARADO NA ESTAÇÃO';
+ if(sub==='missing'||sub.includes('missing'))return 'FALTANTE';
+ if(sub==='problem_solving'||sub.includes('problem_solving'))return 'SOLUÇÃO DE PROBLEMAS';
+ if(sub==='damaged_svc'||sub.includes('damaged_svc')||sub==='damaged'||sub.includes('damaged'))return 'AVARIADO';
+ if(status==='at_station')return sub?sub.replaceAll('_',' ').toUpperCase():'NA ESTAÇÃO';
  return (sub||status||'STATUS NÃO IDENTIFICADO').replaceAll('_',' ').toUpperCase();
 }
-
 const backlogSelectedFiles=[];
 document.getElementById('backlogFiles').addEventListener('change',async e=>{
  const picked=[...e.target.files];
@@ -339,35 +311,52 @@ function renderBacklogFileList(){
  ).join('');
 }
 
+function statusClass(status){return status.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'').toUpperCase()}
 function renderBacklogStats(){
  const counts={};state.backlog.forEach(arr=>arr.forEach(x=>counts[x.status]=(counts[x.status]||0)+1));
  const el=document.getElementById('backlogStats');
- el.innerHTML=Object.keys(counts).sort().map(k=>{const c=backlogStatusClass(k);return `<div class=\"statusRow\"><span class=\"statusDot\" style=\"background:${c}\"></span><div><b>${k}</b><small>${counts[k]} registro(s)</small></div></div>`}).join('')||'Nenhum status identificado.';
+ el.innerHTML=Object.keys(counts).sort().map(k=>{const c=statusClass(k);return `<div class="statusRow status-${c}"><span class="statusDot"></span><div class="statusText">${k}</div><strong style="margin-left:auto">${counts[k]}</strong></div>`}).join('')||'Nenhum status identificado.';
 }
-
-async function backlogLookup(raw){
+const backlogHistory=JSON.parse(localStorage.getItem('argus_backlog_history_v1')||'[]');
+function saveBacklogHistory(){localStorage.setItem('argus_backlog_history_v1',JSON.stringify(backlogHistory.slice(0,500)));renderBacklogHistory()}
+function renderBacklogHistory(){
+ const el=document.getElementById('backlogHistory'); const count=document.getElementById('backlogHistoryCount');
+ count.textContent=`${backlogHistory.length} consulta${backlogHistory.length===1?'':'s'}`;
+ if(!backlogHistory.length){el.textContent='Nenhuma consulta realizada.';return;}
+ el.innerHTML=backlogHistory.slice(0,50).map(x=>{const c=statusClass(x.status||'NÃO ENCONTRADO');return `<div class="historyItem"><span class="statusDot" style="background:${x.color||'#777'}"></span><div><div class="hid">${x.id}</div><small>${x.status||'NÃO ENCONTRADO'} • ${x.datetime}</small></div></div>`}).join('');
+}
+async function sendBacklogIdToSheet(id){
+ const stateEl=document.getElementById('backlogSheetState');
+ try{
+  await fetch(GOOGLE_SHEETS_WEBAPP_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({token:GOOGLE_SHEETS_TOKEN,id})});
+  if(stateEl){stateEl.className='sheetState ok';stateEl.textContent='✓ ID enviado para a planilha';}
+ }catch(err){
+  if(stateEl){stateEl.className='sheetState err';stateEl.textContent='Não foi possível enviar para a planilha.';}
+ }
+}
+function backlogLookup(raw){
  const id=raw.trim();if(!id)return;
  const r=document.getElementById('backlogResult');
  const items=state.backlog.get(id);
+ const datetime=new Date().toLocaleString('pt-BR');
  if(!items){
-  r.className='result bad';r.innerHTML='<div class=\"big\">NÃO ENCONTRADO</div><div>Esse ID não está nos arquivos do Backlog.</div>';
-  addBacklogHistory({id,status:'NÃO ENCONTRADO',datetime:new Date().toLocaleString('pt-BR'),duplicate:false});
+  r.className='result bad';r.innerHTML=`<div class="big">NÃO ENCONTRADO</div><div>${id}</div><div>Esse ID não está nos arquivos do Backlog.</div><div id="backlogSheetState" class="sheetState">Enviando para a planilha...</div>`;
+  backlogHistory.unshift({id,status:'NÃO ENCONTRADO',datetime,color:'#e33b35'});saveBacklogHistory();
+  sendBacklogIdToSheet(id);
   return;
  }
  const unique=[...new Map(items.map(x=>[x.status+'|'+x.source,x])).values()];
- const statuses=[...new Set(unique.map(x=>x.status))];
- const main=statuses[0]||'STATUS NÃO IDENTIFICADO';
- const c=backlogStatusClass(main);
- const html=unique.map(x=>{const color=backlogStatusClass(x.status);return `<div style=\"margin-top:10px;text-align:left;border-left:4px solid ${color};padding-left:10px\"><span class=\"statusBadge\" style=\"background:${color}\">${x.status}</span><br><small>${x.source}</small>${x.route?`<br><small>Rota: ${x.route}</small>`:''}</div>`}).join('');
+ const html=unique.map(x=>{const c=statusClass(x.status);return `<div style="margin-top:10px"><span class="statusBadge status-${c}">${x.status}</span><br><small>${x.source}</small></div>`}).join('');
+ const first=unique[0]?.status||'CONSULTADO';
  r.className='result info';
- r.innerHTML=`<div class=\"big\" style=\"color:${c}\">PACOTE ENCONTRADO</div><div style=\"font-size:19px;margin-top:6px\">${id}</div>${html}`;
- addBacklogHistory({id,status:main,datetime:new Date().toLocaleString('pt-BR'),duplicate:state.backlogHistory.some(x=>x.id===id)});
- await sendBacklogIdToSheet(id);
+ r.innerHTML=`<div class="big">PACOTE ENCONTRADO</div><div style="font-size:19px;margin-top:6px">${id}</div>${html}<div id="backlogSheetState" class="sheetState">Enviando para a planilha...</div>`;
+ backlogHistory.unshift({id,status:first,datetime,color:statusColor(first)});saveBacklogHistory();
+ sendBacklogIdToSheet(id);
 }
-
-setupScan(document.getElementById('backlogScan'),backlogLookup);
-document.getElementById('clearBacklogHistory').addEventListener('click',()=>{if(confirm('Apagar o histórico do Backlog?')){state.backlogHistory=[];saveBacklogHistory()}});
+function statusColor(status){const c=statusClass(status);const map={BLOQUEADO:'#e33b35',COLETADO:'#9b59b6','PARA-DEVOLVER':'#f39c12','AGUARDANDO-DEVOLUÇÃO':'#f1c40f','PARA-DESPACHAR':'#3498db','A-CAMINHO':'#2ecc71','EM-ROTA':'#7f8c8d',BUFFER:'#8e44ad','PARADO-NA-ESTAÇÃO':'#c0392b',FALTANTE:'#e91e63','SOLUÇÃO-DE-PROBLEMAS':'#ff6f61',AVARIADO:'#d35400'};return map[c]||'#777'}
+document.getElementById('clearBacklogHistory').addEventListener('click',()=>{backlogHistory.length=0;saveBacklogHistory()});
 renderBacklogHistory();
+setupScan(document.getElementById('backlogScan'),backlogLookup);
 </script>
 </body>
 </html>
