@@ -7,12 +7,12 @@
 <title>ARGUS — Conferência de Pacotes</title>
 <style>
 :root{--red:#CD1C18;--red2:#f02a25;--black:#050505;--panel:#101010;--panel2:#171717;--line:#292929;--white:#fff;--muted:#a4a4a4;--green:#20c979;--yellow:#f2b94b;--blue:#338cff}
-*{box-sizing:border-box}html{background:var(--black)}body{margin:0;background:radial-gradient(circle at 50% -10%,#241010 0,#080808 35%,#000 75%);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}header{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.94);backdrop-filter:blur(14px);border-bottom:1px solid #242424;padding:14px max(16px,calc((100vw - 980px)/2));display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brandMark{width:42px;height:30px;display:block;filter:none!important;box-shadow:none!important;text-shadow:none!important}.brandMarkSvg{width:42px;height:30px}.brand strong{font-size:22px;letter-spacing:.08em}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase}.homeLogo{display:flex;justify-content:center;align-items:center;padding:4px 18px 18px}.argusLogoImage{width:min(620px,92vw);height:auto;display:block;filter:none!important;box-shadow:none!important}.live{display:flex;align-items:center;gap:7px;color:#ddd;font-size:12px}.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #20c979;display:block}.shell{max-width:980px;margin:auto;padding:18px 16px 42px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;background:#0c0c0c;border:1px solid var(--line);padding:6px;border-radius:16px}.tabs button{border:0;background:transparent;color:#aaa;padding:12px 10px;border-radius:11px;font-weight:800}.tabs button.active{background:var(--red);color:#fff;box-shadow:0 6px 20px #cd1c1840}.card{background:linear-gradient(145deg,#151515,#0d0d0d);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 12px 35px #0008}.eyebrow{color:#999;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}.hero{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.hero h1{margin:3px 0 0;font-size:27px;line-height:1.05}.hero p{margin:6px 0 0;color:var(--muted);font-size:13px}.upload{border:1px dashed #454545;border-radius:15px;padding:14px;background:#0a0a0a}.upload input{width:100%;color:#ddd;font-size:13px}.upload input::file-selector-button{background:#fff;color:#000;border:0;border-radius:9px;padding:9px 11px;font-weight:800;margin-right:9px}.tiny{font-size:11px;color:var(--muted);margin-top:8px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:#0a0a0a;border:1px solid #222;border-radius:14px;padding:12px;text-align:center}.stat span{display:block;color:#8e8e8e;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.stat b{display:block;font-size:23px;margin-top:3px}.stat:last-child b{color:var(--red2)}.progress{height:10px;background:#252525;border-radius:20px;overflow:hidden;margin:13px 0 6px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#ff4a45);box-shadow:0 0 12px #cd1c1870}.progressText{text-align:right;color:#aaa;font-size:11px}.scanWrap{position:relative;margin-top:12px}.scan{width:100%;font-size:20px;padding:18px 48px 18px 18px;border:2px solid #2d2d2d;border-radius:16px;background:#080808;color:#fff;outline:none;text-align:left;box-shadow:inset 0 0 0 1px #000}.scan:focus{border-color:var(--red);box-shadow:0 0 0 4px #cd1c1820}.scan::placeholder{color:#666}.scanIcon{position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:22px;color:#888}.ready{display:flex;align-items:center;gap:7px;margin-top:9px;color:#aaa;font-size:11px}.ready i{width:7px;height:7px;background:var(--green);border-radius:50%;display:block}.result{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;border-radius:18px;margin-top:12px;background:#0a0a0a;border:1px solid #292929}.result .big{font-size:28px;font-weight:900;letter-spacing:.02em}.result .route{font-size:34px;font-weight:900;margin-top:5px;color:#fff}.result.good{background:linear-gradient(145deg,#0d2a1e,#09140f);border-color:#20c979}.result.warn{background:linear-gradient(145deg,#2a210d,#141006);border-color:var(--yellow)}.result.bad{background:linear-gradient(145deg,#2b0d0c,#130707);border-color:var(--red)}.result.info{background:linear-gradient(145deg,#151515,#0b0b0b)}.result .sub{color:#aaa;margin-top:7px;font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.primary,.secondary{border:0;border-radius:12px;padding:12px 14px;font-weight:800}.primary{background:var(--red);color:#fff}.secondary{background:#242424;color:#fff}.primary:hover{background:var(--red2)}.fileRow{padding:11px 12px;border:1px solid #2a2a2a;background:#0b0b0b;border-radius:12px;margin-top:8px}.fileRow b{display:block;font-size:13px}.muted{color:var(--muted)}.statusBadge{display:inline-block;padding:7px 10px;border-radius:99px;font-weight:900;margin-top:8px;background:#262626;color:#fff;font-size:11px}.backlogHistoryList{max-height:300px;overflow:auto}.backlogHistoryItem{padding:10px 12px;border:1px solid #2a2a2a;border-left:5px solid #555;background:#0b0b0b;border-radius:12px;margin-top:8px}.backlogHistoryItem .historyId{font-size:15px;font-weight:900}.backlogHistoryItem .historyStatus{font-size:12px;font-weight:900;margin-top:3px}.backlogHistoryItem small{display:block;color:#888;margin-top:4px}.backlogStatus-AGUARDANDO-DEVOLUÇÃO{border-left-color:#f2b94b}.backlogStatus-PARA-DEVOLVER{border-left-color:#f2b94b}.backlogStatus-PARA-DESPACHAR{border-left-color:#338cff}.backlogStatus-COLETADO{border-left-color:#20c979}.backlogStatus-BLOQUEADO{border-left-color:#e33b35}.backlogStatus-A-CAMINHO{border-left-color:#338cff}.backlogStatus-EM-ROTA-DE-ENTREGA{border-left-color:#20c979}.backlogStatus-BUFFER{border-left-color:#a06cff}.backlogStatus-PARADO-NA-ESTAÇÃO{border-left-color:#f2b94b}.backlogStatus-FALTANTE{border-left-color:#e33b35}.backlogStatus-SOLUÇÃO-DE-PROBLEMAS{border-left-color:#f2b94b}.backlogStatus-AVARIADO{border-left-color:#e33b35}
+*{box-sizing:border-box}html{background:var(--black)}body{margin:0;background:radial-gradient(circle at 50% -10%,#241010 0,#080808 35%,#000 75%);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}header{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.94);backdrop-filter:blur(14px);border-bottom:1px solid #242424;padding:14px max(16px,calc((100vw - 980px)/2));display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.brandMark{width:42px;height:30px;display:block;filter:none!important;box-shadow:none!important;text-shadow:none!important}.brandMarkSvg{width:42px;height:30px}.brand strong{font-size:22px;letter-spacing:.08em}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase}.homeLogo{display:flex;justify-content:center;align-items:center;padding:4px 18px 18px}.argusLogoImage{width:min(620px,92vw);height:auto;display:block;filter:none!important;box-shadow:none!important}.live{display:flex;align-items:center;gap:7px;color:#ddd;font-size:12px}.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #20c979;display:block}.shell{max-width:980px;margin:auto;padding:18px 16px 42px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;background:#0c0c0c;border:1px solid var(--line);padding:6px;border-radius:16px}.tabs button{border:0;background:transparent;color:#aaa;padding:12px 10px;border-radius:11px;font-weight:800}.tabs button.active{background:var(--red);color:#fff;box-shadow:0 6px 20px #cd1c1840}.card{background:linear-gradient(145deg,#151515,#0d0d0d);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 12px 35px #0008}.eyebrow{color:#999;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}.hero{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.hero h1{margin:3px 0 0;font-size:27px;line-height:1.05}.hero p{margin:6px 0 0;color:var(--muted);font-size:13px}.upload{border:1px dashed #454545;border-radius:15px;padding:14px;background:#0a0a0a}.upload input{width:100%;color:#ddd;font-size:13px}.upload input::file-selector-button{background:#fff;color:#000;border:0;border-radius:9px;padding:9px 11px;font-weight:800;margin-right:9px}.tiny{font-size:11px;color:var(--muted);margin-top:8px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#0a0a0a;border:1px solid #222;border-radius:14px;padding:12px;text-align:center}.stat span{display:block;color:#8e8e8e;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.stat b{display:block;font-size:23px;margin-top:3px}.stat:last-child b{color:var(--red2)}.progress{height:10px;background:#252525;border-radius:20px;overflow:hidden;margin:13px 0 6px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#ff4a45);box-shadow:0 0 12px #cd1c1870}.progressText{text-align:right;color:#aaa;font-size:11px}.scanWrap{position:relative;margin-top:12px}.scan{width:100%;font-size:20px;padding:18px 48px 18px 18px;border:2px solid #2d2d2d;border-radius:16px;background:#080808;color:#fff;outline:none;text-align:left;box-shadow:inset 0 0 0 1px #000}.scan:focus{border-color:var(--red);box-shadow:0 0 0 4px #cd1c1820}.scan::placeholder{color:#666}.scanIcon{position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:22px;color:#888}.ready{display:flex;align-items:center;gap:7px;margin-top:9px;color:#aaa;font-size:11px}.ready i{width:7px;height:7px;background:var(--green);border-radius:50%;display:block}.result{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;border-radius:18px;margin-top:12px;background:#0a0a0a;border:1px solid #292929}.result .big{font-size:28px;font-weight:900;letter-spacing:.02em}.result .route{font-size:34px;font-weight:900;margin-top:5px;color:#fff}.result.good{background:linear-gradient(145deg,#0d2a1e,#09140f);border-color:#20c979}.result.warn{background:linear-gradient(145deg,#2a210d,#141006);border-color:var(--yellow)}.result.bad{background:linear-gradient(145deg,#2b0d0c,#130707);border-color:var(--red)}.result.info{background:linear-gradient(145deg,#151515,#0b0b0b)}.result .sub{color:#aaa;margin-top:7px;font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.primary,.secondary{border:0;border-radius:12px;padding:12px 14px;font-weight:800}.primary{background:var(--red);color:#fff}.secondary{background:#242424;color:#fff}.primary:hover{background:var(--red2)}.fileRow{padding:11px 12px;border:1px solid #2a2a2a;background:#0b0b0b;border-radius:12px;margin-top:8px}.fileRow b{display:block;font-size:13px}.muted{color:var(--muted)}.statusBadge{display:inline-block;padding:7px 10px;border-radius:99px;font-weight:900;margin-top:8px;background:#262626;color:#fff;font-size:11px}.backlogHistoryList{max-height:300px;overflow:auto}.searchList{max-height:260px;overflow:auto;margin-top:10px}.searchEntry{padding:10px 12px;border:1px solid #292929;border-radius:11px;margin-top:7px;background:#0b0b0b}.searchEntry b{display:block}.searchEntry small{display:block;color:#aaa;margin-top:3px}.backlogHistoryItem{padding:10px 12px;border:1px solid #2a2a2a;border-left:5px solid #555;background:#0b0b0b;border-radius:12px;margin-top:8px}.backlogHistoryItem .historyId{font-size:15px;font-weight:900}.backlogHistoryItem .historyStatus{font-size:12px;font-weight:900;margin-top:3px}.backlogHistoryItem small{display:block;color:#888;margin-top:4px}.backlogStatus-AGUARDANDO-DEVOLUÇÃO{border-left-color:#f2b94b}.backlogStatus-PARA-DEVOLVER{border-left-color:#f2b94b}.backlogStatus-PARA-DESPACHAR{border-left-color:#338cff}.backlogStatus-COLETADO{border-left-color:#20c979}.backlogStatus-BLOQUEADO{border-left-color:#e33b35}.backlogStatus-A-CAMINHO{border-left-color:#338cff}.backlogStatus-EM-ROTA-DE-ENTREGA{border-left-color:#20c979}.backlogStatus-BUFFER{border-left-color:#a06cff}.backlogStatus-PARADO-NA-ESTAÇÃO{border-left-color:#f2b94b}.backlogStatus-FALTANTE{border-left-color:#e33b35}.backlogStatus-SOLUÇÃO-DE-PROBLEMAS{border-left-color:#f2b94b}.backlogStatus-AVARIADO{border-left-color:#e33b35}
 .result .backlogResultId{font-size:clamp(28px,5vw,52px);font-weight:850;letter-spacing:.03em;line-height:1;word-break:break-all;color:#f5f5f5}
 .result .backlogResultStatus{font-size:clamp(40px,7vw,72px);font-weight:950;line-height:1.02;margin-top:14px;letter-spacing:.01em}
 .backlogResultStatus.status-yellow{color:#f2b94b}.backlogResultStatus.status-blue{color:#338cff}.backlogResultStatus.status-green{color:#20c979}.backlogResultStatus.status-red{color:#e33b35}.backlogResultStatus.status-purple{color:#a06cff}.backlogResultStatus.status-white{color:#f5f5f5}
 .backlogDispatchInfo{display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:12px;color:#d8d8d8;font-size:15px;font-weight:700}.backlogDispatchInfo span{display:inline-block}.backlogDispatchInfo .promiseValue{font-size:clamp(28px,5vw,52px);line-height:1;font-weight:900;letter-spacing:.02em;color:#f5f5f5}.backlogDispatchInfo .postalValue{font-size:15px;font-weight:700;color:#d8d8d8}.backlogDispatchInfo .overdueDays{font-size:clamp(22px,4vw,40px);line-height:1;font-weight:900;color:#e33b35}.backlogDispatchInfo b{color:#fff}.backlogOverdue{color:#e33b35!important;font-weight:900}
-.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.sectionTitle h2{margin:0;font-size:17px}.sectionTitle span{font-size:10px;color:#777;text-transform:uppercase}.menuGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.menuCard{min-height:150px;border-radius:18px;border:1px solid #2a2a2a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:#101010}.menuCard.main{background:linear-gradient(145deg,var(--red),#8e100e);border-color:#ff514d}.menuCard .icon{font-size:28px}.menuCard h2{margin:8px 0 3px;font-size:22px}.menuCard p{margin:0;color:#ddd;font-size:12px}.menuCard .arrow{align-self:flex-end;font-size:24px}.hidden{display:none!important}.divider{height:1px;background:#222;margin:14px 0}@media(max-width:680px){.argusLogoImage{width:min(620px,96vw)}header{padding:13px 15px}.shell{padding:14px 12px 30px}.stats{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:24px}.result .big{font-size:25px}.result .route{font-size:30px}.menuGrid{grid-template-columns:1fr}.menuCard{min-height:125px}}@media(min-width:800px){body{padding-bottom:30px}.shell{padding-top:22px}.result{min-height:190px}.scan{font-size:22px}}
+.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.sectionTitle h2{margin:0;font-size:17px}.sectionTitle span{font-size:10px;color:#777;text-transform:uppercase}.menuGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.menuCard{min-height:150px;border-radius:18px;border:1px solid #2a2a2a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:#101010}.menuCard.main{background:linear-gradient(145deg,var(--red),#8e100e);border-color:#ff514d}.menuCard .icon{font-size:28px}.menuCard h2{margin:8px 0 3px;font-size:22px}.menuCard p{margin:0;color:#ddd;font-size:12px}.menuCard .arrow{align-self:flex-end;font-size:24px}.hidden{display:none!important}.divider{height:1px;background:#222;margin:14px 0}@media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}.argusLogoImage{width:min(620px,96vw)}header{padding:13px 15px}.shell{padding:14px 12px 30px}.stats{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:24px}.result .big{font-size:25px}.result .route{font-size:30px}.menuGrid{grid-template-columns:1fr}.menuCard{min-height:125px}}@media(min-width:800px){body{padding-bottom:30px}.shell{padding-top:22px}.result{min-height:190px}.scan{font-size:22px}}
 </style>
 </head>
 <body>
@@ -25,21 +25,21 @@
 <div class="hero"><div><div class="eyebrow">Operação</div><h1>Encontrar não alocados</h1><p>Carregue a base e confira os pacotes com leitura rápida.</p></div><button class="secondary" type="button" onclick="unlockAudio();this.textContent='🔊 Som ativado'">🔊 Som</button></div>
 <div class="upload"><input id="pendingFile" type="file" accept=".csv,text/csv"><div id="pendingInfo" class="tiny">Nenhum arquivo carregado.</div></div>
 </div>
-<div class="card"><div class="sectionTitle"><h2>Progresso da operação</h2><span>Base atual</span></div><div class="stats"><div class="stat"><span>Total</span><b id="pTotal">0</b></div><div class="stat"><span>Pendentes</span><b id="pEligible">0</b></div><div class="stat"><span>Encontrados</span><b id="pFound">0</b></div><div class="stat"><span>Restantes</span><b id="pRemaining">0</b></div></div><div class="progress"><i id="pBar"></i></div><div id="operationProgress" class="progressText">0% concluído</div></div>
+<div class="card"><div class="sectionTitle"><h2>Progresso da operação</h2><span>Base atual</span></div><div class="stats"><div class="stat"><span>Total na base</span><b id="pTotal">0</b></div><div class="stat"><span>Pendentes na estação</span><b id="pEligible">0</b></div><div class="stat"><span>Encontrados na estação</span><b id="pFound">0</b></div><div class="stat"><span>Restantes na estação</span><b id="pRemaining">0</b></div><div class="stat"><span>Total de bipados</span><b id="pScanned">0</b></div><div class="stat"><span>Pacotes da base encontrados</span><b id="pRouteFound">0</b></div></div><div class="progress"><i id="pBar"></i></div><div id="operationProgress" class="progressText">0% concluído</div></div>
 <div class="card"><div class="sectionTitle"><h2>Modo operação</h2><span>Scanner pronto</span></div><div class="scanWrap"><input id="pendingScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Aproxime o código de barras..."><span class="scanIcon">⌁</span></div><div class="ready"><i></i><span>Aguardando leitura automática</span></div><div id="pendingResult" class="result"><div class="big">AGUARDANDO LEITURA</div><div class="sub">O próximo pacote aparecerá aqui</div></div><div class="actions"><button class="primary" id="downloadHistory" type="button">↓ Baixar histórico CSV</button><button class="secondary" id="clearHistory" type="button">Limpar histórico</button></div></div>
-<div class="card"><div class="sectionTitle"><h2>Últimas leituras</h2><span>Histórico local</span></div><div id="historyList" class="muted">Nenhuma leitura ainda.</div></div>
+<div class="card"><div class="sectionTitle"><h2>Últimas leituras</h2><span>Histórico local</span></div><div id="historyList" class="muted">Nenhuma leitura ainda.</div></div><div class="card"><div class="sectionTitle"><h2>Consultar pacotes já bipados</h2><span>Busca instantânea</span></div><input id="pendingSearch" class="scan" inputmode="numeric" autocomplete="off" placeholder="Digite o ID para conferir se já foi bipado..."><div id="pendingSearchResults" class="searchList muted">Digite um ID para pesquisar.</div></div>
 </section>
 <section id="backlog" class="hidden">
-<div class="card"><div class="hero"><div><div class="eyebrow">Consulta</div><h1>Backlog</h1><p>Adicione os arquivos e deixe o ARGUS identificar os status.</p></div></div><div class="upload"><input id="backlogFiles" type="file" accept=".csv,text/csv"><div class="tiny">No celular, selecione um arquivo por vez. Os arquivos ficam acumulados.</div></div><div class="actions"><button class="secondary" id="clearBacklogFiles" type="button">Limpar arquivos</button></div><div id="backlogFileList" style="margin-top:10px"></div><div id="backlogInfo" class="tiny">Nenhum arquivo carregado.</div></div>
-<div class="card"><div class="sectionTitle"><h2>Consultar pacote</h2><span>Som no atraso</span></div><div class="scanWrap"><input id="backlogScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Bipe ou digite o ID..."><span class="scanIcon">⌁</span></div><div id="backlogResult" class="result"><div class="big">AGUARDANDO LEITURA</div><div class="sub">Consulta de status do backlog</div></div></div>
+<div class="card"><div class="hero"><div><div class="eyebrow">Consulta</div><h1>Backlog</h1><p>Adicione os arquivos e deixe o ARGUS identificar os status.</p></div></div><div class="upload"><input id="backlogFiles" type="file" accept=".csv,text/csv"><div class="tiny">No celular, selecione um arquivo por vez. Os arquivos ficam acumulados.</div></div><div class="upload" style="margin-top:10px"><b>Base de rotas — Overmow</b><input id="overmowFile" type="file" accept=".csv,text/csv"><div class="tiny">Carregue a lista de IDs de Overmorrow (um ID por linha). Ao bipar um ID dessa lista, o ARGUS mostrará OVERMORROW, sem alerta sonoro.</div><div id="overmowInfo" class="tiny">Nenhuma base de rotas carregada.</div></div><div class="actions"><button class="secondary" id="clearBacklogFiles" type="button">Limpar arquivos</button></div><div id="backlogFileList" style="margin-top:10px"></div><div id="backlogInfo" class="tiny">Nenhum arquivo carregado.</div></div>
+<div class="card"><div class="sectionTitle"><h2>Consultar pacote</h2><span>Som no atraso</span></div><div class="scanWrap"><input id="backlogScan" class="scan" inputmode="numeric" autocomplete="off" placeholder="Bipe ou digite o ID..."><span class="scanIcon">⌁</span></div><div id="backlogResult" class="result"><div class="big">AGUARDANDO LEITURA</div><div class="sub">Consulta de status do backlog</div></div><input id="backlogSearch" class="scan" style="margin-top:10px" autocomplete="off" placeholder="Pesquisar um ID específico..."><div id="backlogSearchResults" class="searchList muted">Digite um ID para pesquisar.</div></div>
 <div class="card backlog-history-card"><div class="sectionTitle"><h2>Histórico de consultas</h2><span>Últimas leituras</span></div><div id="backlogHistoryList" class="backlogHistoryList muted">Nenhuma consulta ainda.</div><div class="actions"><button class="primary" id="downloadBacklogHistory" type="button">↓ Baixar histórico CSV</button><button class="secondary" id="clearBacklogHistory" type="button">Limpar histórico</button></div></div>
 <div class="card"><div class="sectionTitle"><h2>Status identificados</h2><span>Resumo</span></div><div id="backlogStats" class="muted">Nenhum arquivo carregado.</div></div>
 </section>
 </main>
 <script>
 const state={
- pending:new Map(), found:new Set(),
- backlog:new Map(), backlogFiles:0,
+ pending:new Map(), found:new Set(), scannedCount:0, scannedIds:[], routeFound:new Set(),
+ backlog:new Map(), backlogFiles:0, overmow:new Map(),
  history:JSON.parse(localStorage.getItem('conferenciaHistorico')||'[]')
 };
 
@@ -135,7 +135,7 @@ document.getElementById('pendingFile').addEventListener('change',async e=>{
  if(!rows.length){alert('CSV vazio.');return}
  const hm=headersMap(rows[0]);
  const idI=hm['id do pacote'], locI=hm['localizacao do pacote'], routeI=hm['n.º rota']??hm['n.° rota']??hm['n rota'];
- state.pending.clear();state.found.clear();
+ state.pending.clear();state.found.clear();state.routeFound.clear();
  rows.slice(1).forEach(r=>{
   const id=String(r[idI]??'').trim(),loc=normalize(r[locI]??'');
   if(!id)return;
@@ -150,7 +150,9 @@ function updatePending(){
  const found=[...state.found].filter(id=>state.pending.get(id)?.location==='na estacao').length;
  const remaining=Math.max(0,eligible-found);
  pTotal.textContent=state.pending.size;pEligible.textContent=eligible;pFound.textContent=found;pRemaining.textContent=remaining;
- const pct=eligible?Math.min(100,found/eligible*100):0; pBar.style.width=pct+'%'; const op=document.getElementById('operationProgress'); if(op)op.textContent=`${pct.toFixed(0)}% concluído • ${found} de ${eligible} encontrados`;
+ document.getElementById('pScanned').textContent=state.scannedCount;
+ document.getElementById('pRouteFound').textContent=state.routeFound.size;
+ const pct=eligible?Math.min(100,found/eligible*100):0; pBar.style.width=pct+'%'; const op=document.getElementById('operationProgress'); if(op)op.textContent=`${pct.toFixed(0)}% concluído • ${found} de ${eligible} encontrados na estação`;
 }
 function saveHistory(){try{localStorage.setItem('conferenciaHistorico',JSON.stringify(state.history))}catch(e){}renderHistory()}
 function addHistory(x){state.history.unshift(x);if(state.history.length>1000)state.history=state.history.slice(0,1000);saveHistory()}
@@ -184,25 +186,34 @@ renderHistory();
 function pendingLookup(raw){
  const id=raw.trim();if(!id)return;
  const r=document.getElementById('pendingResult'),datetime=new Date().toLocaleString('pt-BR');
+ state.scannedCount++;state.scannedIds.unshift({id,datetime});if(state.scannedIds.length>2000)state.scannedIds.length=2000;
  const item=state.pending.get(id);
  if(!item){
-  r.className='result bad';r.innerHTML='<div class="big">NÃO ENCONTRADO</div><div>Esse ID não está na base.</div>';
-  addHistory({datetime,id,route:'',result:'Não encontrado',location:'',duplicate:false});return
+  r.className='result bad';r.innerHTML='<div class="big">NÃO ENCONTRADO NA BASE</div><div>Leitura contabilizada.</div>';
+  addHistory({datetime,id,route:'',result:'Não encontrado',location:'',duplicate:false});updatePending();renderPendingSearch();return
  }
+ state.routeFound.add(id);
  if(item.location==='caminho para a estacao'){
   playFound();
-  r.className='result warn';r.innerHTML=`<div class="big">A CAMINHO</div><div class="route">${item.route||'Rota não informada'}</div><div>Está a caminho da estação e não entra na contagem.</div>`;
-  addHistory({datetime,id,route:item.route,result:'A caminho',location:'Caminho para a estação',duplicate:false});return
+  r.className='result warn';r.innerHTML=`<div class="big">A CAMINHO</div><div class="route">${item.route||'Rota não informada'}</div><div>Pacote da base encontrado • não entra na contagem de estação.</div>`;
+  addHistory({datetime,id,route:item.route,result:'A caminho',location:'Caminho para a estação',duplicate:false});updatePending();renderPendingSearch();return
  }
  if(item.location==='na estacao'){
   const already=state.found.has(id);
-  if(!already){state.found.add(id);playFound();updatePending()}
-  r.className='result good';r.innerHTML=`<div class="big">${already?'JÁ ENCONTRADO':'ENCONTRADO'}</div><div class="route">${item.route||'Rota não informada'}</div><div>${already?'Leitura duplicada — não contou novamente.':'Pacote localizado na estação.'}</div>`;
-  addHistory({datetime,id,route:item.route,result:already?'Já encontrado':'Encontrado',location:'Na estação',duplicate:already});return
+  if(!already){state.found.add(id);playFound()}
+  r.className='result good';r.innerHTML=`<div class="big">${already?'JÁ ENCONTRADO':'ENCONTRADO'}</div><div class="route">${item.route||'Rota não informada'}</div><div>${already?'Leitura duplicada — bipagem contabilizada, pacote único não aumentou.':'Pacote localizado na estação.'}</div>`;
+  addHistory({datetime,id,route:item.route,result:already?'Já encontrado':'Encontrado',location:'Na estação',duplicate:already});updatePending();renderPendingSearch();return
  }
  r.className='result info';r.innerHTML=`<div class="big">ENCONTRADO</div><div class="route">${item.route||'Rota não informada'}</div><div>Localização: ${item.location||'não informada'}</div>`;
- addHistory({datetime,id,route:item.route,result:'Encontrado',location:item.location,duplicate:false})
+ addHistory({datetime,id,route:item.route,result:'Encontrado',location:item.location,duplicate:false});updatePending();renderPendingSearch()
 }
+function renderPendingSearch(){
+ const q=String(document.getElementById('pendingSearch')?.value||'').trim();const el=document.getElementById('pendingSearchResults');if(!el)return;
+ if(!q){el.innerHTML='Digite um ID para pesquisar.';return}
+ const matches=state.history.filter(x=>String(x.id||'').includes(q)).slice(0,30);
+ el.innerHTML=matches.length?matches.map(x=>`<div class="searchEntry"><b>${x.id}</b><small>${x.datetime}</small></div>`).join(''):'Nenhuma bipagem correspondente no histórico.';
+}
+document.getElementById('pendingSearch').addEventListener('input',renderPendingSearch);
 function setupScan(input,fn){
  let processing=false;
  input.addEventListener('keydown',e=>{
@@ -238,8 +249,13 @@ function inferStatus(row,hm){
  if(sub==='waiting_return'||combo.includes('waiting_return'))return 'AGUARDANDO DEVOLUÇÃO';
  if(sub==='for_return'||combo.includes('for_return'))return 'PARA DEVOLVER';
  if(sub==='sorting'||combo.includes('sorting'))return 'PARA DESPACHAR';
- if(sub==='claimed'||combo.includes('claimed'))return 'RECLAMADO';
+ if(sub==='claimed'||combo.includes('claimed'))return 'COLETADO';
  if(sub==='blocked'||combo.includes('blocked'))return 'BLOQUEADO';
+ if(sub==='missing'||combo.includes('missing'))return 'FALTANTE';
+ if(sub==='problem_solving'||combo.includes('problem_solving'))return 'SOLUÇÃO DE PROBLEMAS';
+ if(sub==='buffered'||combo.includes('buffered'))return 'BUFFER';
+ if(sub==='stale'||combo.includes('stale'))return 'PARADO NA ESTAÇÃO';
+ if(sub==='damaged_svc'||combo.includes('damaged_svc'))return 'AVARIADO';
  if(status==='on_way'||combo.includes('on_way'))return 'A CAMINHO';
  if(status==='on_route'||combo.includes('on_route'))return 'EM ROTA DE ENTREGA';
  if(status==='at_station')return sub?sub.replaceAll('_',' ').toUpperCase():'NA ESTAÇÃO';
@@ -260,9 +276,29 @@ document.getElementById('backlogFiles').addEventListener('change',async e=>{
  await rebuildBacklog();
 });
 
+document.getElementById('overmowFile').addEventListener('change',async e=>{
+ const f=e.target.files[0];if(!f)return;
+ const rows=await csvRead(f);state.overmow.clear();
+ if(!rows.length){alert('CSV vazio.');return}
+ // A base Overmow contém somente IDs: aceita arquivo sem cabeçalho ou com coluna ID.
+ const first=rows[0]||[];const hm=headersMap(first);
+ const headerIdI=hm['id do pacote']??hm['id do envio']??hm['id']??hm['package id'];
+ const hasHeader=headerIdI!==undefined;
+ const idI=hasHeader?headerIdI:0;
+ for(const row of rows.slice(hasHeader?1:0)){
+  const id=String(row[idI]??'').trim().replace(/^\uFEFF/,'');
+  if(!id || !/^[0-9]+$/.test(id))continue;
+  state.overmow.set(id,{id,source:f.name});
+ }
+ document.getElementById('overmowInfo').textContent=`${state.overmow.size} IDs carregados de ${f.name}`;
+ document.getElementById('backlogInfo').textContent += ` • Base Overmow: ${state.overmow.size} IDs`;
+ renderBacklogStats();renderBacklogSearch();
+ document.getElementById('backlogScan').focus();
+});
+
 document.getElementById('clearBacklogFiles').addEventListener('click',()=>{
  backlogSelectedFiles.length=0;
- state.backlog.clear();
+ state.backlog.clear();state.overmow.clear();document.getElementById("overmowInfo").textContent="Nenhuma base de rotas carregada.";
  state.backlogFiles=0;
  document.getElementById('backlogFileList').innerHTML='';
  document.getElementById('backlogInfo').textContent='Nenhum arquivo carregado.';
@@ -327,9 +363,18 @@ function renderBacklogFileList(){
 }
 
 function renderBacklogStats(){
- const counts={};state.backlog.forEach(arr=>arr.forEach(x=>counts[x.status]=(counts[x.status]||0)+1));
+ const byId=new Map();state.backlog.forEach((arr,id)=>byId.set(id,arr));
+ const statusesFor=id=>(byId.get(id)||[]).map(x=>x.status);
+ const uniqueIds=[...byId.keys()];
+ const countStatus=fn=>uniqueIds.filter(id=>statusesFor(id).some(fn)).length;
+ const dispatch=countStatus(s=>s==='PARA DESPACHAR');
+ const overdue=countStatus(id=>false); // recalculated below using package details
+ const late=uniqueIds.filter(id=>(byId.get(id)||[]).some(x=>x.status==='PARA DESPACHAR'&&isDispatchOverdue(x))).length;
+ const missing=countStatus(s=>s==='FALTANTE');
+ const problem=countStatus(s=>s==='SOLUÇÃO DE PROBLEMAS');
+ const onroute=countStatus(s=>s==='EM ROTA DE ENTREGA') + [...state.overmow.keys()].filter(id=>!byId.has(id)).length;
  const el=document.getElementById('backlogStats');
- el.innerHTML=Object.keys(counts).sort().map(k=>`<div class="fileRow"><b>${k}</b>${counts[k]} registro(s)</div>`).join('')||'Nenhum status identificado.';
+ el.innerHTML=`<div class="stats"><div class="stat"><span>Para despachar</span><b>${dispatch}</b></div><div class="stat"><span>Promessa vencida +3</span><b>${late}</b></div><div class="stat"><span>Faltante</span><b>${missing}</b></div><div class="stat"><span>Solução de problemas</span><b>${problem}</b></div><div class="stat"><span>Em rota</span><b>${onroute}</b></div></div><div class="tiny">Contagem por ID único, para evitar duplicar pacotes repetidos em arquivos diferentes.</div>`;
 }
 function backlogStatusClass(status){
  return 'backlogStatus-'+String(status||'').replace(/[^A-Za-z0-9À-ÿ]+/g,'-').replace(/^-|-$/g,'').toUpperCase();
@@ -411,7 +456,13 @@ function backlogLookup(raw){
  const id=raw.trim();if(!id)return;
  const r=document.getElementById('backlogResult');
  const items=state.backlog.get(id);
+ const routeItem=state.overmow.get(id);
  const datetime=new Date().toLocaleString('pt-BR');
+ if(routeItem){
+  const status='OVERMORROW';
+  r.className='result info';r.innerHTML=`<div class="backlogResultId">${id}</div><div class="backlogResultStatus" style="color:#CD1C18">${status}</div>`;
+  addBacklogHistory({id,status,datetime,source:'Base Overmow'});return;
+ }
  if(!items){
   r.className='result bad';
   r.innerHTML=`<div class="backlogResultId">${id}</div><div class="backlogResultStatus status-red">NÃO ENCONTRADO</div>`;
@@ -433,10 +484,19 @@ function backlogLookup(raw){
    html+=`<div class="backlogDispatchInfo ${overdue?'backlogOverdue':''}"><span class="promiseValue">${promiseText}</span><span class="postalValue">${postal}</span>${overdue?`<span class="overdueDays">+${overdueDays}</span>`:''}</div>`;
  }
  r.innerHTML=html;
- if(overdue) playFound();
+ if(overdue || statuses.some(st=>st==='PARA DEVOLVER'||st==='AGUARDANDO DEVOLUÇÃO')) playFound();
  unique.forEach(x=>addBacklogHistory({id,status:x.status,datetime,source:x.source}));
 }
 setupScan(document.getElementById('backlogScan'),backlogLookup);
+
+function renderBacklogSearch(){
+ const q=String(document.getElementById('backlogSearch')?.value||'').trim();const el=document.getElementById('backlogSearchResults');if(!el)return;
+ if(!q){el.innerHTML='Digite um ID para pesquisar.';return}
+ const ids=new Set([...state.backlog.keys(),...state.overmow.keys()]);const matches=[...ids].filter(id=>id.includes(q)).slice(0,30);
+ el.innerHTML=matches.length?matches.map(id=>{const arr=state.backlog.get(id)||[];const route=state.overmow.get(id);const statuses=arr.map(x=>x.status);if(route)statuses.push('ROTA '+(route.route||''));return `<div class="searchEntry"><b>${id}</b><small>${statuses.join(' • ')||'Base de rotas'}</small></div>`}).join(''):'Nenhum pacote correspondente nas bases carregadas.';
+}
+document.getElementById('backlogSearch').addEventListener('input',renderBacklogSearch);
+
 </script>
 </body>
 </html>
