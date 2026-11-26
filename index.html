@@ -110,10 +110,16 @@ window.addEventListener('pointerdown',()=>{unlockAudio();keepScreenOn()},{passiv
 window.addEventListener('touchstart',()=>{unlockAudio();keepScreenOn()},{passive:true});
 window.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')keepScreenOn()});
 let alertLoop=null;
-function stopFoundAlert(){if(alertLoop){clearInterval(alertLoop);alertLoop=null}}
+const alertOscillators=new Set();
+function stopFoundAlert(){
+ if(alertLoop){clearInterval(alertLoop);alertLoop=null}
+ for(const oscillator of alertOscillators){try{oscillator.stop()}catch(e){};try{oscillator.disconnect()}catch(e){}}
+ alertOscillators.clear();
+ try{if(navigator.vibrate)navigator.vibrate(0)}catch(e){}
+}
 function playFound(){
  stopFoundAlert();
- const tone=()=>{try{unlockAudio();const ctx=audioCtx;if(!ctx)return;const now=ctx.currentTime;[0,0.34].forEach(offset=>[880,1175,1480].forEach((f,j)=>{const o=ctx.createOscillator(),g=ctx.createGain(),t=now+offset+j*.10;o.frequency.value=f;o.type='sine';g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.85,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+.13);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.14)}))}catch(e){}};
+ const tone=()=>{try{unlockAudio();const ctx=audioCtx;if(!ctx)return;const now=ctx.currentTime;[0,0.34].forEach(offset=>[880,1175,1480].forEach((f,j)=>{const o=ctx.createOscillator(),g=ctx.createGain(),t=now+offset+j*.10;alertOscillators.add(o);o.onended=()=>{alertOscillators.delete(o);try{o.disconnect();g.disconnect()}catch(e){}};o.frequency.value=f;o.type='sine';g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.85,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+.13);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.14)}))}catch(e){}};
  tone();alertLoop=setInterval(tone,1100);try{if(navigator.vibrate)navigator.vibrate([180,70,260])}catch(e){}
 }
 
@@ -214,9 +220,10 @@ document.getElementById('pendingSearch').addEventListener('input',renderPendingS
 function setupScan(input,fn){
  let timer=null,processing=false;
  const reset=()=>{if(timer)clearTimeout(timer);timer=null;input.value='';processing=false};
- input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const v=input.value.replace(/\D/g,'');if(v.length===11&&!processing){processing=true;fn(v);reset()}else if(v.length>0){reset()}}});
+ input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const v=input.value.replace(/\D/g,'');if(v.length===11&&!processing){processing=true;fn(v);reset()}else if(v.length>0){reset()}}else if(e.key.length===1){stopFoundAlert()}});
  input.addEventListener('input',()=>{
   const value=input.value.replace(/\D/g,'');input.value=value;
+  if(value.length)stopFoundAlert();
   if(timer)clearTimeout(timer);
   if(value.length>11){reset();const r=input.id==='pendingScan'?document.getElementById('pendingResult'):document.getElementById('backlogResult');if(r){r.className='result bad';r.innerHTML='<div class="big">LEITURA INVÁLIDA</div><div class="sub">Código com mais de 11 dígitos descartado. Bipe novamente.</div>'}return}
   if(value.length===11){timer=setTimeout(()=>{if(!processing&&input.value.length===11){processing=true;fn(input.value);reset()}},220)}
